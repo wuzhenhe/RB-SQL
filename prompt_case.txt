@@ -1,0 +1,154 @@
+*******question_id 0: How many singers do we have?
+
+Given a 【Database schema】 description, a knowledge 【Evidence】 and the 【Question】, you need to use valid SQLite and understand the database and knowledge, and then generate the corresponding SQL.
+
+==========
+#few-shot1
+【Database schema】
+# Table: stadium
+[
+  (Stadium_ID, stadium id. Value examples: [1, 2, 3, 4, 5, 6].),
+  (Location, location. Value examples: ['Stirling Albion', 'Raith Rovers', "Queen's Park", 'Peterhead', 'East Fife', 'Brechin City'].),
+  (Name, name. Value examples: ["Stark's Park", 'Somerset Park', 'Recreation Park', 'Hampden Park', 'Glebe Park', 'Gayfield Park'].),
+  (Capacity, capacity. Value examples: [52500, 11998, 10104, 4125, 4000, 3960].),
+  (Highest, highest. Value examples: [4812, 2363, 1980, 1763, 1125, 1057].),
+  (Lowest, lowest. Value examples: [1294, 1057, 533, 466, 411, 404].),
+  (Average, average. Value examples: [2106, 1477, 864, 730, 642, 638].)
+]
+# Table: concert
+[
+  (concert_ID, concert id. Value examples: [1, 2, 3, 4, 5, 6].),
+  (concert_Name, concert name. Value examples: ['Week 1', 'Week 2', 'Super bootcamp', 'Home Visits', 'Auditions'].),
+  (Theme, theme. Value examples: ['Wide Awake', 'Party All Night', 'Happy Tonight', 'Free choice 2', 'Free choice', 'Bleeding Love'].),
+  (Stadium_ID, stadium id. Value examples: ['2', '9', '7', '10', '1'].),
+  (Year, year. Value examples: ['2015', '2014'].)
+]
+【Foreign keys】
+concert.`Stadium_ID` = stadium.`Stadium_ID`
+
+【Evidence】
+The stadium name is mapped to `Name` in the table stadium; the number of concerts in each stadium is the count of `concert_ID` from the table concert grouped by `Stadium_ID`.
+
+【Question】
+Show the stadium name and the number of concerts in each stadium.
+
+Generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+1. generate the SQL skeleton from question:
+```sql skeleton
+SELECT T1.[column_name], COUNT(*) FROM [table_name] AS T1 JOIN [table_name] AS T2 ON T1.[column_name] = T2.[column_name] GROUP BY T1.[column_name]
+```
+
+2. Fill the skeleton with 【Evidence】, replace [table_name] and [column_name] with exactly column name and table name in schema:
+```sql
+SELECT T1.`Name`, COUNT(*) FROM stadium AS T1 JOIN concert AS T2 ON T1.`Stadium_ID` = T2.`Stadium_ID` GROUP BY T1.`Stadium_ID`
+```
+Question Solved.
+
+==========
+#few-shot2
+【Database schema】
+# Table: singer
+[
+  (Singer_ID, singer id. Value examples: [1, 2].),
+  (Name, name. Value examples: ['Tribal King', 'Timbaland'].),
+  (Country, country. Value examples: ['France', 'United States', 'Netherlands'].),
+  (Song_Name, song name. Value examples: ['You', 'Sun', 'Love', 'Hey Oh'].),
+  (Song_release_year, song release year. Value examples: ['2016', '2014'].),
+  (Age, age. Value examples: [52, 43].)
+]
+# Table: concert
+[
+  (concert_ID, concert id. Value examples: [1, 2].),
+  (concert_Name, concert name. Value examples: ['Super bootcamp', 'Home Visits', 'Auditions'].),
+  (Theme, theme. Value examples: ['Wide Awake', 'Party All Night'].),
+  (Stadium_ID, stadium id. Value examples: ['2', '9'].),
+  (Year, year. Value examples: ['2015', '2014'].)
+]
+# Table: singer_in_concert
+[
+  (concert_ID, concert id. Value examples: [1, 2].),
+  (Singer_ID, singer id. Value examples: ['3', '6'].)
+]
+【Foreign keys】
+singer_in_concert.`Singer_ID` = singer.`Singer_ID`
+singer_in_concert.`concert_ID` = concert.`concert_ID`
+
+【Evidence】
+The youngest singer refers to the singer with the lowest `Age` value in the table singer; the name and release year of the song are mapped to `Name` and `Song_release_year` in the table singer.
+
+【Question】
+Show the name and the release year of the song by the youngest singer.
+
+Generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+1. generate the SQL skeleton from question:
+```sql skeleton
+SELECT [column_name], [column_name] FROM [table_name] WHERE [column_name] = (SELECT MIN([column_name]) FROM [table_name])
+```
+
+2. Fill the skeleton with 【Evidence】, replace [table_name] and [column_name] with exactly column name and table name in schema:
+```sql
+SELECT `Song_Name`, `Song_release_year` FROM singer WHERE Age = (SELECT MIN(Age) FROM singer)
+```
+
+Question Solved.
+
+==========
+
+【Database schema】
+# Table: stadium
+[
+  (Stadium_ID, stadium id.),
+  (Location, location. Value examples: ['Stirling Albion', 'Raith Rovers', "Queen's Park", 'Peterhead', 'East Fife', 'Brechin City'].),
+  (Name, name. Value examples: ["Stark's Park", 'Somerset Park', 'Recreation Park', 'Hampden Park', 'Glebe Park', 'Gayfield Park'].),
+  (Capacity, capacity. Value examples: [52500, 11998, 10104, 4125, 4000, 3960].),
+  (Highest, highest. Value examples: [4812, 2363, 1980, 1763, 1125, 1057].),
+  (Lowest, lowest. Value examples: [1294, 1057, 533, 466, 411, 404].),
+  (Average, average. Value examples: [2106, 1477, 864, 730, 642, 638].)
+]
+# Table: singer
+[
+  (Singer_ID, singer id.),
+  (Name, name. Value examples: ['Tribal King', 'Timbaland', 'Rose White', 'Justin Brown', 'John Nizinik', 'Joe Sharp'].),
+  (Country, country. Value examples: ['France', 'United States', 'Netherlands'].),
+  (Song_Name, song name. Value examples: ['You', 'Sun', 'Love', 'Hey Oh', 'Gentleman', 'Dangerous'].),
+  (Song_release_year, song release year. Value examples: ['2016', '2014', '2013', '2008', '2003', '1992'].),
+  (Age, age. Value examples: [52, 43, 41, 32, 29, 25].),
+  (Is_male, is male. Value examples: ['T', 'F'].)
+]
+# Table: concert
+[
+  (concert_ID, concert id.),
+  (concert_Name, concert name. Value examples: ['Week 1', 'Week 2', 'Super bootcamp', 'Home Visits', 'Auditions'].),
+  (Theme, theme. Value examples: ['Wide Awake', 'Party All Night', 'Happy Tonight', 'Free choice 2', 'Free choice', 'Bleeding Love'].),
+  (Stadium_ID, stadium id.),
+  (Year, year. Value examples: ['2015', '2014'].)
+]
+# Table: singer_in_concert
+[
+  (concert_ID, concert id.),
+  (Singer_ID, singer id.)
+]
+【Foreign keys】
+concert.`Stadium_ID` = stadium.`Stadium_ID`
+singer_in_concert.`Singer_ID` = singer.`Singer_ID`
+singer_in_concert.`concert_ID` = concert.`concert_ID`
+
+【Evidence】
+The total number of singers is represented by the count of distinct `Singer_ID` in the table singer.
+
+【Question】
+How many singers do we have?
+
+Generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+1. Generate the SQL skeleton from the question:
+```sql skeleton
+SELECT COUNT(DISTINCT [column_name]) FROM [table_name]
+```
+
+2. Fill the skeleton with 【Evidence】, replace [table_name] and [column_name] with exactly column name and table name in schema:
+```sql
+SELECT COUNT(DISTINCT `Singer_ID`) FROM singer
+```
+
+Question Solved.
+*******
