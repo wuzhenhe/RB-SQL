@@ -1,4 +1,4 @@
-The RB-models are designed base on ColBERT. The environment and data formats are the same as ColBERT.
+The RB-models are designed base on [ColBERT](https://github.com/stanford-futuredata/ColBERT/tree/colbertv1). The environment and data formats are the same as ColBERT.
 
 User should construct datasets from the original BIRD and Spider.
 
