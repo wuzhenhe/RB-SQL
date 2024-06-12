@@ -1,12 +1,13 @@
-The RB-models are designed base on ColBERT.
+The RB-models are designed base on ColBERT. The environment and data formats are the same as ColBERT.
 
+So you should construct datasets from the original BIRD and Spider.
 
-
-We provide examples about how to train and use RB-models as follows:
-## First
+Here, we provide some processed datasets and examples about how to train and use RB-models as follows:
+## Set PYTHONPATH
 ```
 export PYTHONPATH=$PYTHONPATH:/.../RB-model
 ```
+
 # Table-Retriever
 
 ## Training
