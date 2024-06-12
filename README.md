@@ -11,5 +11,5 @@ For details, see the RB-model folder.
 ```Spider_dev_evidence.json``` and ```Spider_test_evidence.json``` shows Spider datasets with generated evidence.
 
 ## Prompt details
-We provide an example in ```prompt_case.txt``` to illustrate the prompt details of RB-SQL.  
+We provide an example in ```prompt_case.txt``` to illustrate the prompt details of RB-SQL,  which contains 2-shot examples and all the instructions.  
 
