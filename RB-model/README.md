@@ -28,7 +28,7 @@ python ./colbert/calculate_sim_colbert.py --amp --doc_maxlen 180 --mask-punctuat
 --checkpoint ./experiments/bird/train.py/bird.cosine/checkpoints/xxx.dnn \
 --root ./experiments/ --experiment bird
 ```
-We can edit the the last line of```calculate_sim_colbert.py``` to modify the result file address.
+User can edit the the last line of```calculate_sim_colbert.py``` to modify the result file address.
 
 # Column-Retriever
 
@@ -50,6 +50,27 @@ python ./colbert/calculate_sim_colbert_column.py --amp --doc_maxlen 180 --mask-p
 --checkpoint ./experiments/bird_columns/train.py/bird_columns.cosine/checkpoints/xxx.dnn \
 --root ./experiments/ --experiment bird
 ```
-We can edit the the last line of```calculate_sim_colbert_column.py``` to modify the result file address.
+User can edit the the last line of```calculate_sim_colbert_column.py``` to modify the result file address.
 
+# SQL-Skeleton-Retriever
+
+## Training
+
+```
+python ./colbert/train.py --amp --doc_maxlen 180 --mask-punctuation --bsize 32 --accum 1 \
+--triples ./bird_sql_skeleton_train/triples_sqls.train.tsv \
+--collection ./bird_sql_skeleton_train/sqls_skeleton.train.tsv \
+--queries ./bird_sql_skeleton_train/queries.train.tsv \
+--root ./experiments/ --experiment bird_sql_skeleton --similarity cosine --run bird_sql_skeleton.cosine
+```
+The trained model is reserved as ```./experiments/bird_sql_skeleton/train.py/bird_sql_skeleton.cosine/checkpoints/xxx.dnn```
+
+## Reference
+
+```
+python ./colbert/calculate_sim_colbert_sql.py --amp --doc_maxlen 180 --mask-punctuation \
+--checkpoint ./experiments/bird_sql_skeleton/train.py/bird_sql_skeleton.cosine/checkpoints/xxx.dnn \
+--root ./experiments/ --experiment bird
+```
+User can edit the the last line of```calculate_sim_colbert_sql.py``` to modify the result file address.
 
