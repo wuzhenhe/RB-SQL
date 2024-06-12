@@ -1,0 +1,11 @@
+[
+    {
+        "db_id": "movie_platform",
+        "question": "Name movie titles released in year 1945. Sort the listing by the descending order of movie popularity.",
+        "evidence": "released in the year 1945 refers to movie_release_year = 1945;",
+        "SQL": "SELECT movie_title FROM movies WHERE movie_release_year = 1945 ORDER BY movie_popularity DESC LIMIT 1",
+        "table_names": [
+            "movies"
+        ]
+    }
+]

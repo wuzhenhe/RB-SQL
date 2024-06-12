@@ -1,0 +1,2714 @@
+{
+  "debit_card_specializing": {
+    "tables": {
+      "customers": {
+        "customerid": {
+          "full_column_name": "CustomerID"
+        },
+        "segment": {
+          "full_column_name": "client segment"
+        },
+        "currency": {
+          "full_column_name": "Currency"
+        }
+      },
+      "gasstations": {
+        "gasstationid": {
+          "full_column_name": "Gas Station ID"
+        },
+        "chainid": {
+          "full_column_name": "Chain ID"
+        },
+        "country": {
+          "full_column_name": "Country"
+        },
+        "segment": {
+          "full_column_name": "chain segment"
+        }
+      },
+      "products": {
+        "productid": {
+          "full_column_name": "Product ID"
+        },
+        "description": {
+          "full_column_name": "Description"
+        }
+      },
+      "transactions_1k": {
+        "transactionid": {
+          "full_column_name": "Transaction ID"
+        },
+        "date": {
+          "full_column_name": "Date"
+        },
+        "time": {
+          "full_column_name": "Time"
+        },
+        "customerid": {
+          "full_column_name": "Customer ID"
+        },
+        "cardid": {
+          "full_column_name": "Card ID"
+        },
+        "gasstationid": {
+          "full_column_name": "Gas Station ID"
+        },
+        "productid": {
+          "full_column_name": "Product ID"
+        },
+        "amount": {
+          "full_column_name": "Amount"
+        },
+        "price": {
+          "full_column_name": "Price"
+        }
+      },
+      "yearmonth": {
+        "customerid": {
+          "full_column_name": "Customer ID"
+        },
+        "date": {
+          "full_column_name": "Date"
+        },
+        "consumption": {
+          "full_column_name": "Consumption"
+        }
+      }
+    },
+    "foreign_keys": [
+      "yearmonth.CustomerID=customers.CustomerID"
+    ]
+  },
+  "financial": {
+    "tables": {
+      "account": {
+        "account_id": {
+          "full_column_name": "account id"
+        },
+        "district_id": {
+          "full_column_name": "location of branch"
+        },
+        "frequency": {
+          "full_column_name": "frequency"
+        },
+        "date": {
+          "full_column_name": "date"
+        }
+      },
+      "card": {
+        "card_id": {
+          "full_column_name": "credit card id"
+        },
+        "disp_id": {
+          "full_column_name": "disposition id"
+        },
+        "type": {
+          "full_column_name": "type"
+        },
+        "issued": {
+          "full_column_name": "issued"
+        }
+      },
+      "client": {
+        "client_id": {
+          "full_column_name": "client id"
+        },
+        "gender": {
+          "full_column_name": "gender"
+        },
+        "birth_date": {
+          "full_column_name": "birth date"
+        },
+        "district_id": {
+          "full_column_name": "location of branch"
+        }
+      },
+      "disp": {
+        "disp_id": {
+          "full_column_name": "disposition id"
+        },
+        "client_id": {
+          "full_column_name": "client id"
+        },
+        "account_id": {
+          "full_column_name": "account id"
+        },
+        "type": {
+          "full_column_name": "type"
+        }
+      },
+      "district": {
+        "district_id": {
+          "full_column_name": "location of branch"
+        },
+        "a2": {
+          "full_column_name": "district name"
+        },
+        "a3": {
+          "full_column_name": "region"
+        },
+        "a4": {
+          "full_column_name": "number of inhabitants"
+        },
+        "a5": {
+          "full_column_name": "no. of municipalities with inhabitants < 499"
+        },
+        "a6": {
+          "full_column_name": "no. of municipalities with inhabitants 500-1999"
+        },
+        "a7": {
+          "full_column_name": "no. of municipalities with inhabitants 2000-9999"
+        },
+        "a8": {
+          "full_column_name": "no. of municipalities with inhabitants > 10000"
+        },
+        "a9": {
+          "full_column_name": "A9"
+        },
+        "a10": {
+          "full_column_name": "ratio of urban inhabitants"
+        },
+        "a11": {
+          "full_column_name": "average salary"
+        },
+        "a12": {
+          "full_column_name": "unemployment rate 1995"
+        },
+        "a13": {
+          "full_column_name": "unemployment rate 1996"
+        },
+        "a14": {
+          "full_column_name": "no. of entrepreneurs per 1000 inhabitants"
+        },
+        "a15": {
+          "full_column_name": "no. of committed crimes 1995"
+        },
+        "a16": {
+          "full_column_name": "no. of committed crimes 1996"
+        }
+      },
+      "loan": {
+        "loan_id": {
+          "full_column_name": "loan id"
+        },
+        "account_id": {
+          "full_column_name": "account id"
+        },
+        "date": {
+          "full_column_name": "date"
+        },
+        "amount": {
+          "full_column_name": "amount"
+        },
+        "duration": {
+          "full_column_name": "duration"
+        },
+        "payments": {
+          "full_column_name": "monthly payments"
+        },
+        "status": {
+          "full_column_name": "status"
+        }
+      },
+      "order": {
+        "order_id": {
+          "full_column_name": "order id"
+        },
+        "account_id": {
+          "full_column_name": "account id"
+        },
+        "bank_to": {
+          "full_column_name": "bank of the recipient"
+        },
+        "account_to": {
+          "full_column_name": "account of the recipient"
+        },
+        "amount": {
+          "full_column_name": "debited amount"
+        },
+        "k_symbol": {
+          "full_column_name": "characterization of the payment"
+        }
+      },
+      "trans": {
+        "trans_id": {
+          "full_column_name": "transaction id"
+        },
+        "account_id": {
+          "full_column_name": "account id"
+        },
+        "date": {
+          "full_column_name": "date of transaction"
+        },
+        "type": {
+          "full_column_name": "+/- transaction"
+        },
+        "operation": {
+          "full_column_name": "mode of transaction"
+        },
+        "amount": {
+          "full_column_name": "amount of money"
+        },
+        "balance": {
+          "full_column_name": "balance after transaction"
+        },
+        "k_symbol": {
+          "full_column_name": "characterization of the transaction"
+        },
+        "bank": {
+          "full_column_name": "bank of the partner"
+        },
+        "account": {
+          "full_column_name": "account of the partner"
+        }
+      }
+    },
+    "foreign_keys": [
+      "account.district_id=district.district_id",
+      "card.disp_id=disp.disp_id",
+      "client.district_id=district.district_id",
+      "disp.client_id=client.client_id",
+      "disp.account_id=account.account_id",
+      "loan.account_id=account.account_id",
+      "order.account_id=account.account_id",
+      "trans.account_id=account.account_id"
+    ]
+  },
+  "formula_1": {
+    "tables": {
+      "circuits": {
+        "circuitid": {
+          "full_column_name": "circuit Id"
+        },
+        "circuitref": {
+          "full_column_name": "circuit reference name"
+        },
+        "name": {
+          "full_column_name": "name"
+        },
+        "location": {
+          "full_column_name": "location"
+        },
+        "country": {
+          "full_column_name": "country"
+        },
+        "lat": {
+          "full_column_name": "latitude"
+        },
+        "lng": {
+          "full_column_name": "longitude"
+        },
+        "alt": {
+          "full_column_name": "alt"
+        },
+        "url": {
+          "full_column_name": "url"
+        }
+      },
+      "constructors": {
+        "constructorid": {
+          "full_column_name": "constructor Id"
+        },
+        "constructorref": {
+          "full_column_name": "Constructor Reference name"
+        },
+        "name": {
+          "full_column_name": "name"
+        },
+        "nationality": {
+          "full_column_name": "nationality"
+        },
+        "url": {
+          "full_column_name": "url"
+        }
+      },
+      "drivers": {
+        "driverid": {
+          "full_column_name": "driver ID"
+        },
+        "driverref": {
+          "full_column_name": "driver reference name"
+        },
+        "number": {
+          "full_column_name": "number"
+        },
+        "code": {
+          "full_column_name": "code"
+        },
+        "forename": {
+          "full_column_name": "forename"
+        },
+        "surname": {
+          "full_column_name": "surname"
+        },
+        "dob": {
+          "full_column_name": "date of birth"
+        },
+        "nationality": {
+          "full_column_name": "nationality"
+        },
+        "url": {
+          "full_column_name": "url"
+        }
+      },
+      "seasons": {
+        "year": {
+          "full_column_name": "race ID"
+        },
+        "url": {
+          "full_column_name": "url"
+        }
+      },
+      "races": {
+        "raceid": {
+          "full_column_name": "race ID"
+        },
+        "year": {
+          "full_column_name": "year"
+        },
+        "round": {
+          "full_column_name": "round"
+        },
+        "circuitid": {
+          "full_column_name": "Circuit Id"
+        },
+        "name": {
+          "full_column_name": "name"
+        },
+        "date": {
+          "full_column_name": "date"
+        },
+        "time": {
+          "full_column_name": "time"
+        },
+        "url": {
+          "full_column_name": "url"
+        }
+      },
+      "constructorresults": {
+        "constructorresultsid": {
+          "full_column_name": "constructor Results Id"
+        },
+        "raceid": {
+          "full_column_name": "race Id"
+        },
+        "constructorid": {
+          "full_column_name": "constructor Id"
+        },
+        "points": {
+          "full_column_name": "points"
+        },
+        "status": {
+          "full_column_name": "status"
+        }
+      },
+      "constructorstandings": {
+        "constructorstandingsid": {
+          "full_column_name": "constructor Standings Id"
+        },
+        "raceid": {
+          "full_column_name": "race id"
+        },
+        "constructorid": {
+          "full_column_name": "constructor id"
+        },
+        "points": {
+          "full_column_name": "points"
+        },
+        "position": {
+          "full_column_name": "position"
+        },
+        "positiontext": {
+          "full_column_name": "position text"
+        },
+        "wins": {
+          "full_column_name": "wins"
+        }
+      },
+      "driverstandings": {
+        "driverstandingsid": {
+          "full_column_name": "driver Standings Id"
+        },
+        "raceid": {
+          "full_column_name": "constructor Reference name"
+        },
+        "driverid": {
+          "full_column_name": "driverId"
+        },
+        "points": {
+          "full_column_name": "points"
+        },
+        "position": {
+          "full_column_name": "position"
+        },
+        "positiontext": {
+          "full_column_name": "position text"
+        },
+        "wins": {
+          "full_column_name": "wins"
+        }
+      },
+      "laptimes": {
+        "raceid": {
+          "full_column_name": "race ID"
+        },
+        "driverid": {
+          "full_column_name": "driver ID"
+        },
+        "lap": {
+          "full_column_name": "lap"
+        },
+        "position": {
+          "full_column_name": "position"
+        },
+        "time": {
+          "full_column_name": "time"
+        },
+        "milliseconds": {
+          "full_column_name": "milliseconds"
+        }
+      },
+      "pitstops": {
+        "raceid": {
+          "full_column_name": "race ID"
+        },
+        "driverid": {
+          "full_column_name": "driver ID"
+        },
+        "stop": {
+          "full_column_name": "stop"
+        },
+        "lap": {
+          "full_column_name": "lap"
+        },
+        "time": {
+          "full_column_name": "time"
+        },
+        "duration": {
+          "full_column_name": "duration"
+        },
+        "milliseconds": {
+          "full_column_name": "milliseconds"
+        }
+      },
+      "qualifying": {
+        "qualifyid": {
+          "full_column_name": "qualify Id"
+        },
+        "raceid": {
+          "full_column_name": "race Id"
+        },
+        "driverid": {
+          "full_column_name": "driver Id"
+        },
+        "constructorid": {
+          "full_column_name": "constructor id"
+        },
+        "number": {
+          "full_column_name": "number"
+        },
+        "position": {
+          "full_column_name": "position"
+        },
+        "q1": {
+          "full_column_name": "qualifying 1"
+        },
+        "q2": {
+          "full_column_name": "qualifying 2"
+        },
+        "q3": {
+          "full_column_name": "qualifying 3"
+        }
+      },
+      "status": {
+        "statusid": {
+          "full_column_name": "status ID"
+        },
+        "status": {
+          "full_column_name": "status"
+        }
+      },
+      "results": {
+        "resultid": {
+          "full_column_name": "Result ID"
+        },
+        "raceid": {
+          "full_column_name": "race ID"
+        },
+        "driverid": {
+          "full_column_name": "driver ID"
+        },
+        "constructorid": {
+          "full_column_name": "constructor Id"
+        },
+        "number": {
+          "full_column_name": "number"
+        },
+        "grid": {
+          "full_column_name": "grid"
+        },
+        "position": {
+          "full_column_name": "position"
+        },
+        "positiontext": {
+          "full_column_name": "position text"
+        },
+        "positionorder": {
+          "full_column_name": "position order"
+        },
+        "points": {
+          "full_column_name": "points"
+        },
+        "laps": {
+          "full_column_name": "laps"
+        },
+        "time": {
+          "full_column_name": "time"
+        },
+        "milliseconds": {
+          "full_column_name": "milliseconds"
+        },
+        "fastestlap": {
+          "full_column_name": "fastest lap"
+        },
+        "rank": {
+          "full_column_name": "rank"
+        },
+        "fastestlaptime": {
+          "full_column_name": "fastest Lap Time"
+        },
+        "fastestlapspeed": {
+          "full_column_name": "fastest Lap Speed"
+        },
+        "statusid": {
+          "full_column_name": "status Id"
+        }
+      }
+    },
+    "foreign_keys": [
+      "races.circuitId=circuits.circuitId",
+      "races.year=seasons.year",
+      "constructorResults.constructorId=constructors.constructorId",
+      "constructorResults.raceId=races.raceId",
+      "constructorStandings.constructorId=constructors.constructorId",
+      "constructorStandings.raceId=races.raceId",
+      "driverStandings.driverId=drivers.driverId",
+      "driverStandings.raceId=races.raceId",
+      "lapTimes.driverId=drivers.driverId",
+      "lapTimes.raceId=races.raceId",
+      "pitStops.driverId=drivers.driverId",
+      "pitStops.raceId=races.raceId",
+      "qualifying.constructorId=constructors.constructorId",
+      "qualifying.driverId=drivers.driverId",
+      "qualifying.raceId=races.raceId",
+      "results.statusId=status.statusId",
+      "results.constructorId=constructors.constructorId",
+      "results.driverId=drivers.driverId",
+      "results.raceId=races.raceId"
+    ]
+  },
+  "california_schools": {
+    "tables": {
+      "frpm": {
+        "cdscode": {
+          "full_column_name": "CDSCode"
+        },
+        "academic year": {
+          "full_column_name": "Academic Year"
+        },
+        "county code": {
+          "full_column_name": "County Code"
+        },
+        "district code": {
+          "full_column_name": "District Code"
+        },
+        "school code": {
+          "full_column_name": "School Code"
+        },
+        "county name": {
+          "full_column_name": "County Name"
+        },
+        "district name": {
+          "full_column_name": "District Name"
+        },
+        "school name": {
+          "full_column_name": "School Name"
+        },
+        "district type": {
+          "full_column_name": "District Type"
+        },
+        "school type": {
+          "full_column_name": "School Type"
+        },
+        "educational option type": {
+          "full_column_name": "Educational Option Type"
+        },
+        "nslp provision status": {
+          "full_column_name": "NSLP Provision Status"
+        },
+        "charter school (y/n)": {
+          "full_column_name": "Charter School (Y/N)"
+        },
+        "charter school number": {
+          "full_column_name": "Charter School Number"
+        },
+        "charter funding type": {
+          "full_column_name": "Charter Funding Type"
+        },
+        "irc": {
+          "full_column_name": "IRC"
+        },
+        "low grade": {
+          "full_column_name": "Low Grade"
+        },
+        "high grade": {
+          "full_column_name": "High Grade"
+        },
+        "enrollment (k-12)": {
+          "full_column_name": "Enrollment (K-12)"
+        },
+        "free meal count (k-12)": {
+          "full_column_name": "Free Meal Count (K-12)"
+        },
+        "percent (%) eligible free (k-12)": {
+          "full_column_name": "Percent (%) Eligible Free (K-12)"
+        },
+        "frpm count (k-12)": {
+          "full_column_name": "FRPM Count (K-12)"
+        },
+        "percent (%) eligible frpm (k-12)": {
+          "full_column_name": "Percent (%) Eligible FRPM (K-12)"
+        },
+        "enrollment (ages 5-17)": {
+          "full_column_name": "Enrollment (Ages 5-17)"
+        },
+        "free meal count (ages 5-17)": {
+          "full_column_name": "Free Meal Count (Ages 5-17)"
+        },
+        "percent (%) eligible free (ages 5-17)": {
+          "full_column_name": "Percent (%) Eligible Free (Ages 5-17)"
+        },
+        "frpm count (ages 5-17)": {
+          "full_column_name": "FRPM Count (Ages 5-17)"
+        },
+        "percent (%) eligible frpm (ages 5-17)": {
+          "full_column_name": "Percent (%) Eligible FRPM (Ages 5-17)"
+        },
+        "2013-14 calpads fall 1 certification status": {
+          "full_column_name": "2013-14 CALPADS Fall 1 Certification Status"
+        }
+      },
+      "satscores": {
+        "cds": {
+          "full_column_name": "cds"
+        },
+        "rtype": {
+          "full_column_name": "rtype"
+        },
+        "sname": {
+          "full_column_name": "school name"
+        },
+        "dname": {
+          "full_column_name": "district name"
+        },
+        "cname": {
+          "full_column_name": "county name"
+        },
+        "enroll12": {
+          "full_column_name": "enrollment (1st-12nd grade)"
+        },
+        "numtsttakr": {
+          "full_column_name": "Number of Test Takers"
+        },
+        "avgscrread": {
+          "full_column_name": "average scores in Reading"
+        },
+        "avgscrmath": {
+          "full_column_name": "average scores in Math"
+        },
+        "avgscrwrite": {
+          "full_column_name": "average scores in writing"
+        },
+        "numge1500": {
+          "full_column_name": "Number of Test Takers Whose Total SAT Scores Are Greater or Equal to 1500"
+        }
+      },
+      "schools": {
+        "cdscode": {
+          "full_column_name": "CDSCode"
+        },
+        "ncesdist": {
+          "full_column_name": "National Center for Educational Statistics school district identification number"
+        },
+        "ncesschool": {
+          "full_column_name": "National Center for Educational Statistics school identification number"
+        },
+        "statustype": {
+          "full_column_name": "StatusType"
+        },
+        "county": {
+          "full_column_name": "County"
+        },
+        "district": {
+          "full_column_name": "District"
+        },
+        "school": {
+          "full_column_name": "School"
+        },
+        "street": {
+          "full_column_name": "Street"
+        },
+        "streetabr": {
+          "full_column_name": "street address"
+        },
+        "city": {
+          "full_column_name": "City"
+        },
+        "zip": {
+          "full_column_name": "Zip"
+        },
+        "state": {
+          "full_column_name": "State"
+        },
+        "mailstreet": {
+          "full_column_name": "MailStreet"
+        },
+        "mailstrabr": {
+          "full_column_name": "mailing street address"
+        },
+        "mailcity": {
+          "full_column_name": "mailing city"
+        },
+        "mailzip": {
+          "full_column_name": "mailing zip"
+        },
+        "mailstate": {
+          "full_column_name": "mailing state"
+        },
+        "phone": {
+          "full_column_name": "Phone"
+        },
+        "ext": {
+          "full_column_name": "extension"
+        },
+        "website": {
+          "full_column_name": "Website"
+        },
+        "opendate": {
+          "full_column_name": "OpenDate"
+        },
+        "closeddate": {
+          "full_column_name": "ClosedDate"
+        },
+        "charter": {
+          "full_column_name": "Charter"
+        },
+        "charternum": {
+          "full_column_name": "CharterNum"
+        },
+        "fundingtype": {
+          "full_column_name": "FundingType"
+        },
+        "doc": {
+          "full_column_name": "District Ownership Code"
+        },
+        "doctype": {
+          "full_column_name": "The District Ownership Code Type"
+        },
+        "soc": {
+          "full_column_name": "School Ownership Code"
+        },
+        "soctype": {
+          "full_column_name": "School Ownership Code Type"
+        },
+        "edopscode": {
+          "full_column_name": "Education Option Code"
+        },
+        "edopsname": {
+          "full_column_name": "Educational Option Name"
+        },
+        "eilcode": {
+          "full_column_name": "Educational Instruction Level Code"
+        },
+        "eilname": {
+          "full_column_name": "Educational Instruction Level Name"
+        },
+        "gsoffered": {
+          "full_column_name": "grade span offered"
+        },
+        "gsserved": {
+          "full_column_name": "grade span served."
+        },
+        "virtual": {
+          "full_column_name": "Virtual"
+        },
+        "magnet": {
+          "full_column_name": "Magnet"
+        },
+        "latitude": {
+          "full_column_name": "Latitude"
+        },
+        "longitude": {
+          "full_column_name": "Longitude"
+        },
+        "admfname1": {
+          "full_column_name": "administrator's first name 1"
+        },
+        "admlname1": {
+          "full_column_name": "administrator's last name 1"
+        },
+        "admemail1": {
+          "full_column_name": "administrator's email address 1"
+        },
+        "admfname2": {
+          "full_column_name": "administrator's first name 2"
+        },
+        "admlname2": {
+          "full_column_name": "administrator's last name 2"
+        },
+        "admemail2": {
+          "full_column_name": "administrator's email address 2"
+        },
+        "admfname3": {
+          "full_column_name": "administrator's first name 3"
+        },
+        "admlname3": {
+          "full_column_name": "administrator's last name 3"
+        },
+        "admemail3": {
+          "full_column_name": "administrator's email address 3"
+        },
+        "lastupdate": {
+          "full_column_name": "Last Update"
+        }
+      }
+    },
+    "foreign_keys": [
+      "frpm.CDSCode=schools.CDSCode",
+      "satscores.cds=schools.CDSCode"
+    ]
+  },
+  "card_games": {
+    "tables": {
+      "cards": {
+        "id": {
+          "full_column_name": "unique id number identifying the cards"
+        },
+        "artist": {
+          "full_column_name": "artist"
+        },
+        "asciiname": {
+          "full_column_name": "ascii Name"
+        },
+        "availability": {
+          "full_column_name": "availability"
+        },
+        "bordercolor": {
+          "full_column_name": "border Color"
+        },
+        "cardkingdomfoilid": {
+          "full_column_name": "card Kingdom Foil Id"
+        },
+        "cardkingdomid": {
+          "full_column_name": "card Kingdom Id"
+        },
+        "coloridentity": {
+          "full_column_name": "color Identity"
+        },
+        "colorindicator": {
+          "full_column_name": "color Indicator"
+        },
+        "colors": {
+          "full_column_name": "colors"
+        },
+        "convertedmanacost": {
+          "full_column_name": "converted Mana Cost"
+        },
+        "dueldeck": {
+          "full_column_name": "duel Deck"
+        },
+        "edhrecrank": {
+          "full_column_name": "rec Rank in edh"
+        },
+        "faceconvertedmanacost": {
+          "full_column_name": "face Converted Mana Cost"
+        },
+        "facename": {
+          "full_column_name": "face Name"
+        },
+        "flavorname": {
+          "full_column_name": "flavor Name"
+        },
+        "flavortext": {
+          "full_column_name": "flavor Text"
+        },
+        "frameeffects": {
+          "full_column_name": "frame Effects"
+        },
+        "frameversion": {
+          "full_column_name": "frame Version"
+        },
+        "hand": {
+          "full_column_name": "hand"
+        },
+        "hasalternativedecklimit": {
+          "full_column_name": "has Alternative Deck Limit"
+        },
+        "hascontentwarning": {
+          "full_column_name": "has Content Warning"
+        },
+        "hasfoil": {
+          "full_column_name": "has Foil"
+        },
+        "hasnonfoil": {
+          "full_column_name": "has Non Foil"
+        },
+        "isalternative": {
+          "full_column_name": "is Alternative"
+        },
+        "isfullart": {
+          "full_column_name": "is Full Art"
+        },
+        "isonlineonly": {
+          "full_column_name": "is Online Only"
+        },
+        "isoversized": {
+          "full_column_name": "is Oversized"
+        },
+        "ispromo": {
+          "full_column_name": "is Promotion"
+        },
+        "isreprint": {
+          "full_column_name": "is Reprint"
+        },
+        "isreserved": {
+          "full_column_name": "is Reserved"
+        },
+        "isstarter": {
+          "full_column_name": "is Starter"
+        },
+        "isstoryspotlight": {
+          "full_column_name": "is Story Spotlight"
+        },
+        "istextless": {
+          "full_column_name": "is Text less"
+        },
+        "istimeshifted": {
+          "full_column_name": "is Time shifted"
+        },
+        "keywords": {
+          "full_column_name": "keywords"
+        },
+        "layout": {
+          "full_column_name": "layout"
+        },
+        "leadershipskills": {
+          "full_column_name": "leadership Skills"
+        },
+        "life": {
+          "full_column_name": "life"
+        },
+        "loyalty": {
+          "full_column_name": "loyalty"
+        },
+        "manacost": {
+          "full_column_name": "mana Cost"
+        },
+        "mcmid": {
+          "full_column_name": "mcmId"
+        },
+        "mcmmetaid": {
+          "full_column_name": "mcmMetaId"
+        },
+        "mtgarenaid": {
+          "full_column_name": "mtgArenaId"
+        },
+        "mtgjsonv4id": {
+          "full_column_name": "mtgjsonV4Id"
+        },
+        "mtgofoilid": {
+          "full_column_name": "mtgoFoilId"
+        },
+        "mtgoid": {
+          "full_column_name": "mtgoId"
+        },
+        "multiverseid": {
+          "full_column_name": "multiverseId"
+        },
+        "name": {
+          "full_column_name": "name"
+        },
+        "number": {
+          "full_column_name": "number"
+        },
+        "originalreleasedate": {
+          "full_column_name": "originalReleaseDate"
+        },
+        "originaltext": {
+          "full_column_name": "originalText"
+        },
+        "originaltype": {
+          "full_column_name": "originalType"
+        },
+        "otherfaceids": {
+          "full_column_name": "otherFaceIds"
+        },
+        "power": {
+          "full_column_name": "power"
+        },
+        "printings": {
+          "full_column_name": "printings"
+        },
+        "promotypes": {
+          "full_column_name": "promo Types"
+        },
+        "purchaseurls": {
+          "full_column_name": "purchase Urls"
+        },
+        "rarity": {
+          "full_column_name": "rarity"
+        },
+        "scryfallid": {
+          "full_column_name": "scryfallId"
+        },
+        "scryfallillustrationid": {
+          "full_column_name": "scryfallIllustrationId"
+        },
+        "scryfalloracleid": {
+          "full_column_name": "scryfallOracleId"
+        },
+        "setcode": {
+          "full_column_name": "Set Code"
+        },
+        "side": {
+          "full_column_name": "side"
+        },
+        "subtypes": {
+          "full_column_name": "subtypes"
+        },
+        "supertypes": {
+          "full_column_name": "super types"
+        },
+        "tcgplayerproductid": {
+          "full_column_name": "tcg player ProductId"
+        },
+        "text": {
+          "full_column_name": "text"
+        },
+        "toughness": {
+          "full_column_name": "toughness"
+        },
+        "type": {
+          "full_column_name": "type"
+        },
+        "types": {
+          "full_column_name": "types"
+        },
+        "uuid": {
+          "full_column_name": "uuid"
+        },
+        "variations": {
+          "full_column_name": "variations"
+        },
+        "watermark": {
+          "full_column_name": "watermark"
+        }
+      },
+      "foreign_data": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "flavortext": {
+          "full_column_name": "flavor Text"
+        },
+        "language": {
+          "full_column_name": "language"
+        },
+        "multiverseid": {
+          "full_column_name": "multiverseid"
+        },
+        "name": {
+          "full_column_name": "name"
+        },
+        "text": {
+          "full_column_name": "text"
+        },
+        "type": {
+          "full_column_name": "type"
+        },
+        "uuid": {
+          "full_column_name": "uuid"
+        }
+      },
+      "legalities": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "format": {
+          "full_column_name": "format"
+        },
+        "status": {
+          "full_column_name": "status"
+        },
+        "uuid": {
+          "full_column_name": "uuid"
+        }
+      },
+      "sets": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "basesetsize": {
+          "full_column_name": "base Set Size"
+        },
+        "block": {
+          "full_column_name": "block"
+        },
+        "booster": {
+          "full_column_name": "booster"
+        },
+        "code": {
+          "full_column_name": "code"
+        },
+        "isfoilonly": {
+          "full_column_name": "is Foil Only"
+        },
+        "isforeignonly": {
+          "full_column_name": "is Foreign Only"
+        },
+        "isnonfoilonly": {
+          "full_column_name": "is Non Foil Only"
+        },
+        "isonlineonly": {
+          "full_column_name": "is Online Only"
+        },
+        "ispartialpreview": {
+          "full_column_name": "is Partial Preview"
+        },
+        "keyrunecode": {
+          "full_column_name": "keyrune Code"
+        },
+        "mcmid": {
+          "full_column_name": "magic card market id"
+        },
+        "mcmidextras": {
+          "full_column_name": "magic card market ID Extras"
+        },
+        "mcmname": {
+          "full_column_name": "magic card market name"
+        },
+        "mtgocode": {
+          "full_column_name": "magic the gathering online code"
+        },
+        "name": {
+          "full_column_name": "name"
+        },
+        "parentcode": {
+          "full_column_name": "parent Code"
+        },
+        "releasedate": {
+          "full_column_name": "release Date"
+        },
+        "tcgplayergroupid": {
+          "full_column_name": "tcg player Group Id"
+        },
+        "totalsetsize": {
+          "full_column_name": "total Set Size"
+        },
+        "type": {
+          "full_column_name": "type"
+        }
+      },
+      "set_translations": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "language": {
+          "full_column_name": "language"
+        },
+        "setcode": {
+          "full_column_name": "set code"
+        },
+        "translation": {
+          "full_column_name": "translation"
+        }
+      },
+      "ruling": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "date": {
+          "full_column_name": "date"
+        },
+        "text": {
+          "full_column_name": "text"
+        },
+        "uuid": {
+          "full_column_name": "uuid"
+        }
+      }
+    },
+    "foreign_keys": [
+      "foreign_data.uuid=cards.uuid",
+      "legalities.uuid=cards.uuid",
+      "set_translations.setCode=sets.code",
+      "ruling.uuid=cards.uuid"
+    ]
+  },
+  "european_football_2": {
+    "tables": {
+      "player_attributes": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "player_fifa_api_id": {
+          "full_column_name": "player federation international football association api id"
+        },
+        "player_api_id": {
+          "full_column_name": "player api id"
+        },
+        "date": {
+          "full_column_name": "date"
+        },
+        "overall_rating": {
+          "full_column_name": "overall rating"
+        },
+        "potential": {
+          "full_column_name": "potential"
+        },
+        "preferred_foot": {
+          "full_column_name": "preferred foot"
+        },
+        "attacking_work_rate": {
+          "full_column_name": "attacking work rate"
+        },
+        "defensive_work_rate": {
+          "full_column_name": "defensive work rate"
+        },
+        "crossing": {
+          "full_column_name": "crossing"
+        },
+        "finishing": {
+          "full_column_name": "finishing"
+        },
+        "heading_accuracy": {
+          "full_column_name": "heading accuracy"
+        },
+        "short_passing": {
+          "full_column_name": "short passing"
+        },
+        "volleys": {
+          "full_column_name": "volleys"
+        },
+        "dribbling": {
+          "full_column_name": "dribbling"
+        },
+        "curve": {
+          "full_column_name": "curve"
+        },
+        "free_kick_accuracy": {
+          "full_column_name": "free kick accuracy"
+        },
+        "long_passing": {
+          "full_column_name": "long passing"
+        },
+        "ball_control": {
+          "full_column_name": "ball control"
+        },
+        "acceleration": {
+          "full_column_name": "acceleration"
+        },
+        "sprint_speed": {
+          "full_column_name": "sprint speed"
+        },
+        "agility": {
+          "full_column_name": "agility"
+        },
+        "reactions": {
+          "full_column_name": "reactions"
+        },
+        "balance": {
+          "full_column_name": "balance"
+        },
+        "shot_power": {
+          "full_column_name": "shot power"
+        },
+        "jumping": {
+          "full_column_name": "jumping"
+        },
+        "stamina": {
+          "full_column_name": "stamina"
+        },
+        "strength": {
+          "full_column_name": "strength"
+        },
+        "long_shots": {
+          "full_column_name": "long shots"
+        },
+        "aggression": {
+          "full_column_name": "aggression"
+        },
+        "interceptions": {
+          "full_column_name": "interceptions"
+        },
+        "positioning": {
+          "full_column_name": "positioning"
+        },
+        "vision": {
+          "full_column_name": "vision"
+        },
+        "penalties": {
+          "full_column_name": "penalties"
+        },
+        "marking": {
+          "full_column_name": "marking"
+        },
+        "standing_tackle": {
+          "full_column_name": "standing tackle"
+        },
+        "sliding_tackle": {
+          "full_column_name": "sliding tackle"
+        },
+        "gk_diving": {
+          "full_column_name": "goalkeep diving"
+        },
+        "gk_handling": {
+          "full_column_name": "goalkeep handling"
+        },
+        "gk_kicking": {
+          "full_column_name": "goalkeep kicking"
+        },
+        "gk_positioning": {
+          "full_column_name": "goalkeep positioning"
+        },
+        "gk_reflexes": {
+          "full_column_name": "goalkeep reflexes"
+        }
+      },
+      "player": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "player_api_id": {
+          "full_column_name": "player api id"
+        },
+        "player_name": {
+          "full_column_name": "player name"
+        },
+        "player_fifa_api_id": {
+          "full_column_name": "player federation international football association api id"
+        },
+        "birthday": {
+          "full_column_name": "birthday"
+        },
+        "height": {
+          "full_column_name": "height"
+        },
+        "weight": {
+          "full_column_name": "weight"
+        }
+      },
+      "league": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "country_id": {
+          "full_column_name": "country id"
+        },
+        "name": {
+          "full_column_name": "name"
+        }
+      },
+      "country": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "name": {
+          "full_column_name": "name"
+        }
+      },
+      "team": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "team_api_id": {
+          "full_column_name": "team api id"
+        },
+        "team_fifa_api_id": {
+          "full_column_name": "team federation international football association api id"
+        },
+        "team_long_name": {
+          "full_column_name": "team long name"
+        },
+        "team_short_name": {
+          "full_column_name": "team short name"
+        }
+      },
+      "team_attributes": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "team_fifa_api_id": {
+          "full_column_name": "team federation international football association api id"
+        },
+        "team_api_id": {
+          "full_column_name": "team api id"
+        },
+        "date": {
+          "full_column_name": "date"
+        },
+        "buildupplayspeed": {
+          "full_column_name": "build Up Play Speed"
+        },
+        "buildupplayspeedclass": {
+          "full_column_name": "build Up Play Speed Class"
+        },
+        "buildupplaydribbling": {
+          "full_column_name": "build Up Play Dribbling"
+        },
+        "buildupplaydribblingclass": {
+          "full_column_name": "build Up Play Dribbling Class"
+        },
+        "buildupplaypassing": {
+          "full_column_name": "build Up Play Passing"
+        },
+        "buildupplaypassingclass": {
+          "full_column_name": "build Up Play Passing Class"
+        },
+        "buildupplaypositioningclass": {
+          "full_column_name": "build Up Play Positioning Class"
+        },
+        "chancecreationpassing": {
+          "full_column_name": "chance Creation Passing"
+        },
+        "chancecreationpassingclass": {
+          "full_column_name": "chance Creation Passing Class"
+        },
+        "chancecreationcrossing": {
+          "full_column_name": "chance Creation Crossing"
+        },
+        "chancecreationcrossingclass": {
+          "full_column_name": "chance Creation Crossing Class"
+        },
+        "chancecreationshooting": {
+          "full_column_name": "chance Creation Shooting"
+        },
+        "chancecreationshootingclass": {
+          "full_column_name": "chance Creation Shooting Class"
+        },
+        "chancecreationpositioningclass": {
+          "full_column_name": "chance Creation Positioning Class"
+        },
+        "defencepressure": {
+          "full_column_name": "defence Pressure"
+        },
+        "defencepressureclass": {
+          "full_column_name": "defence Pressure Class"
+        },
+        "defenceaggression": {
+          "full_column_name": "defence Aggression"
+        },
+        "defenceaggressionclass": {
+          "full_column_name": "defence Aggression Class"
+        },
+        "defenceteamwidth": {
+          "full_column_name": "defence Team Width"
+        },
+        "defenceteamwidthclass": {
+          "full_column_name": "defence Team Width Class"
+        },
+        "defencedefenderlineclass": {
+          "full_column_name": "defence Defender Line Class"
+        }
+      },
+      "match": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "country_id": {
+          "full_column_name": "country id"
+        },
+        "league_id": {
+          "full_column_name": "league id"
+        },
+        "season": {
+          "full_column_name": "season"
+        },
+        "stage": {
+          "full_column_name": "stage"
+        },
+        "date": {
+          "full_column_name": "date"
+        },
+        "match_api_id": {
+          "full_column_name": "match api id"
+        },
+        "home_team_api_id": {
+          "full_column_name": "home team api id"
+        },
+        "away_team_api_id": {
+          "full_column_name": "away team api id"
+        },
+        "home_team_goal": {
+          "full_column_name": "home team goal"
+        },
+        "away_team_goal": {
+          "full_column_name": "away team goal"
+        },
+        "home_player_x1": {
+          "full_column_name": "home player X1"
+        },
+        "home_player_x2": {
+          "full_column_name": "home player X2"
+        },
+        "home_player_x3": {
+          "full_column_name": "home player X3"
+        },
+        "home_player_x4": {
+          "full_column_name": "home player X4"
+        },
+        "home_player_x5": {
+          "full_column_name": "home player X5"
+        },
+        "home_player_x6": {
+          "full_column_name": "home player X6"
+        },
+        "home_player_x7": {
+          "full_column_name": "home player X7"
+        },
+        "home_player_x8": {
+          "full_column_name": "home player X8"
+        },
+        "home_player_x9": {
+          "full_column_name": "home player X9"
+        },
+        "home_player_x10": {
+          "full_column_name": "home player X10"
+        },
+        "home_player_x11": {
+          "full_column_name": "home player X11"
+        },
+        "away_player_x1": {
+          "full_column_name": "away player X1"
+        },
+        "away_player_x2": {
+          "full_column_name": "away player X2"
+        },
+        "away_player_x3": {
+          "full_column_name": "away player X3"
+        },
+        "away_player_x4": {
+          "full_column_name": "away player X4"
+        },
+        "away_player_x5": {
+          "full_column_name": "away player X5"
+        },
+        "away_player_x6": {
+          "full_column_name": "away player X6"
+        },
+        "away_player_x7": {
+          "full_column_name": "away player X7"
+        },
+        "away_player_x8": {
+          "full_column_name": "away player X8"
+        },
+        "away_player_x9": {
+          "full_column_name": "away player X9"
+        },
+        "away_player_x10": {
+          "full_column_name": "away player X10"
+        },
+        "away_player_x11": {
+          "full_column_name": "away player X11"
+        },
+        "home_player_y1": {
+          "full_column_name": "home player Y1"
+        },
+        "home_player_y2": {
+          "full_column_name": "home player Y2"
+        },
+        "home_player_y3": {
+          "full_column_name": "home player Y3"
+        },
+        "home_player_y4": {
+          "full_column_name": "home player Y4"
+        },
+        "home_player_y5": {
+          "full_column_name": "home player Y5"
+        },
+        "home_player_y6": {
+          "full_column_name": "home player Y6"
+        },
+        "home_player_y7": {
+          "full_column_name": "home player Y7"
+        },
+        "home_player_y8": {
+          "full_column_name": "home player Y8"
+        },
+        "home_player_y9": {
+          "full_column_name": "home player Y9"
+        },
+        "home_player_y10": {
+          "full_column_name": "home player Y10"
+        },
+        "home_player_y11": {
+          "full_column_name": "home player Y11"
+        },
+        "away_player_y1": {
+          "full_column_name": "away player Y1"
+        },
+        "away_player_y2": {
+          "full_column_name": "away player Y2"
+        },
+        "away_player_y3": {
+          "full_column_name": "away player Y3"
+        },
+        "away_player_y4": {
+          "full_column_name": "away player Y4"
+        },
+        "away_player_y5": {
+          "full_column_name": "away player Y5"
+        },
+        "away_player_y6": {
+          "full_column_name": "away player Y6"
+        },
+        "away_player_y7": {
+          "full_column_name": "away player Y7"
+        },
+        "away_player_y8": {
+          "full_column_name": "away player Y8"
+        },
+        "away_player_y9": {
+          "full_column_name": "away player Y9"
+        },
+        "away_player_y10": {
+          "full_column_name": "away player Y10"
+        },
+        "away_player_y11": {
+          "full_column_name": "away player Y11"
+        },
+        "home_player_1": {
+          "full_column_name": "home player 1"
+        },
+        "home_player_2": {
+          "full_column_name": "home player 2"
+        },
+        "home_player_3": {
+          "full_column_name": "home player 3"
+        },
+        "home_player_4": {
+          "full_column_name": "home player 4"
+        },
+        "home_player_5": {
+          "full_column_name": "home player 5"
+        },
+        "home_player_6": {
+          "full_column_name": "home player 6"
+        },
+        "home_player_7": {
+          "full_column_name": "home player 7"
+        },
+        "home_player_8": {
+          "full_column_name": "home player 8"
+        },
+        "home_player_9": {
+          "full_column_name": "home player 9"
+        },
+        "home_player_10": {
+          "full_column_name": "home player 10"
+        },
+        "home_player_11": {
+          "full_column_name": "home player 11"
+        },
+        "away_player_1": {
+          "full_column_name": "away player 1"
+        },
+        "away_player_2": {
+          "full_column_name": "away player 2"
+        },
+        "away_player_3": {
+          "full_column_name": "away player 3"
+        },
+        "away_player_4": {
+          "full_column_name": "away player 4"
+        },
+        "away_player_5": {
+          "full_column_name": "away player 5"
+        },
+        "away_player_6": {
+          "full_column_name": "away player 6"
+        },
+        "away_player_7": {
+          "full_column_name": "away player 7"
+        },
+        "away_player_8": {
+          "full_column_name": "away player 8"
+        },
+        "away_player_9": {
+          "full_column_name": "away player 9"
+        },
+        "away_player_10": {
+          "full_column_name": "away player 10"
+        },
+        "away_player_11": {
+          "full_column_name": "away player 11"
+        },
+        "goal": {
+          "full_column_name": "goal"
+        },
+        "shoton": {
+          "full_column_name": "shot on"
+        },
+        "shotoff": {
+          "full_column_name": "shot off"
+        },
+        "foulcommit": {
+          "full_column_name": "foul commit"
+        },
+        "card": {
+          "full_column_name": "card"
+        },
+        "cross": {
+          "full_column_name": "cross"
+        },
+        "corner": {
+          "full_column_name": "corner"
+        },
+        "possession": {
+          "full_column_name": "possession"
+        },
+        "b365h": {
+          "full_column_name": "B365H"
+        },
+        "b365d": {
+          "full_column_name": "B365D"
+        },
+        "b365a": {
+          "full_column_name": "B365A"
+        },
+        "bwh": {
+          "full_column_name": "BWH"
+        },
+        "bwd": {
+          "full_column_name": "BWD"
+        },
+        "bwa": {
+          "full_column_name": "BWA"
+        },
+        "iwh": {
+          "full_column_name": "IWH"
+        },
+        "iwd": {
+          "full_column_name": "IWD"
+        },
+        "iwa": {
+          "full_column_name": "IWA"
+        },
+        "lbh": {
+          "full_column_name": "LBH"
+        },
+        "lbd": {
+          "full_column_name": "LBD"
+        },
+        "lba": {
+          "full_column_name": "LBA"
+        },
+        "psh": {
+          "full_column_name": "PSH"
+        },
+        "psd": {
+          "full_column_name": "PSD"
+        },
+        "psa": {
+          "full_column_name": "PSA"
+        },
+        "whh": {
+          "full_column_name": "WHH"
+        },
+        "whd": {
+          "full_column_name": "WHD"
+        },
+        "wha": {
+          "full_column_name": "WHA"
+        },
+        "sjh": {
+          "full_column_name": "SJH"
+        },
+        "sjd": {
+          "full_column_name": "SJD"
+        },
+        "sja": {
+          "full_column_name": "SJA"
+        },
+        "vch": {
+          "full_column_name": "VCH"
+        },
+        "vcd": {
+          "full_column_name": "VCD"
+        },
+        "vca": {
+          "full_column_name": "VCA"
+        },
+        "gbh": {
+          "full_column_name": "GBH"
+        },
+        "gbd": {
+          "full_column_name": "GBD"
+        },
+        "gba": {
+          "full_column_name": "GBA"
+        },
+        "bsh": {
+          "full_column_name": "BSH"
+        },
+        "bsd": {
+          "full_column_name": "BSD"
+        },
+        "bsa": {
+          "full_column_name": "BSA"
+        }
+      }
+    },
+    "foreign_keys": [
+      "Player_Attributes.player_api_id=Player.player_api_id",
+      "Player_Attributes.player_fifa_api_id=Player.player_fifa_api_id",
+      "League.country_id=Country.id",
+      "Team_Attributes.team_api_id=Team.team_api_id",
+      "Team_Attributes.team_fifa_api_id=Team.team_fifa_api_id",
+      "Match.away_player_11=Player.player_api_id",
+      "Match.away_player_10=Player.player_api_id",
+      "Match.away_player_9=Player.player_api_id",
+      "Match.away_player_8=Player.player_api_id",
+      "Match.away_player_7=Player.player_api_id",
+      "Match.away_player_6=Player.player_api_id",
+      "Match.away_player_5=Player.player_api_id",
+      "Match.away_player_4=Player.player_api_id",
+      "Match.away_player_3=Player.player_api_id",
+      "Match.away_player_2=Player.player_api_id",
+      "Match.away_player_1=Player.player_api_id",
+      "Match.home_player_11=Player.player_api_id",
+      "Match.home_player_10=Player.player_api_id",
+      "Match.home_player_9=Player.player_api_id",
+      "Match.home_player_8=Player.player_api_id",
+      "Match.home_player_7=Player.player_api_id",
+      "Match.home_player_6=Player.player_api_id",
+      "Match.home_player_5=Player.player_api_id",
+      "Match.home_player_4=Player.player_api_id",
+      "Match.home_player_3=Player.player_api_id",
+      "Match.home_player_2=Player.player_api_id",
+      "Match.home_player_1=Player.player_api_id",
+      "Match.away_team_api_id=Team.team_api_id",
+      "Match.home_team_api_id=Team.team_api_id"
+    ]
+  },
+  "thrombosis_prediction": {
+    "tables": {
+      "examination": {
+        "id": {
+          "full_column_name": "ID"
+        },
+        "examination date": {
+          "full_column_name": "Examination Date"
+        },
+        "acl igg": {
+          "full_column_name": "anti-Cardiolipin antibody (IgG)"
+        },
+        "acl igm": {
+          "full_column_name": "anti-Cardiolipin antibody (IgM)"
+        },
+        "ana": {
+          "full_column_name": "anti-nucleus antibody"
+        },
+        "ana pattern": {
+          "full_column_name": "pattern observed in the sheet of ANA examination"
+        },
+        "acl iga": {
+          "full_column_name": "anti-Cardiolipin antibody (IgA) concentration"
+        },
+        "diagnosis": {
+          "full_column_name": "Diagnosis"
+        },
+        "kct": {
+          "full_column_name": "measure of degree of coagulation"
+        },
+        "rvvt": {
+          "full_column_name": "measure of degree of coagulation"
+        },
+        "lac": {
+          "full_column_name": "measure of degree of coagulation"
+        },
+        "symptoms": {
+          "full_column_name": "Symptoms"
+        },
+        "thrombosis": {
+          "full_column_name": "Thrombosis"
+        }
+      },
+      "patient": {
+        "id": {
+          "full_column_name": "ID"
+        },
+        "sex": {
+          "full_column_name": "SEX"
+        },
+        "birthday": {
+          "full_column_name": "Birthday"
+        },
+        "description": {
+          "full_column_name": "Description"
+        },
+        "first date": {
+          "full_column_name": "First Date"
+        },
+        "admission": {
+          "full_column_name": "Admission"
+        },
+        "diagnosis": {
+          "full_column_name": "Diagnosis"
+        }
+      },
+      "laboratory": {
+        "id": {
+          "full_column_name": "ID"
+        },
+        "date": {
+          "full_column_name": "Date"
+        },
+        "got": {
+          "full_column_name": "AST glutamic oxaloacetic transaminase"
+        },
+        "gpt": {
+          "full_column_name": "ALT glutamic pyruvic transaminase"
+        },
+        "ldh": {
+          "full_column_name": "lactate dehydrogenase"
+        },
+        "alp": {
+          "full_column_name": "alkaliphophatase"
+        },
+        "tp": {
+          "full_column_name": "total protein"
+        },
+        "alb": {
+          "full_column_name": "albumin"
+        },
+        "ua": {
+          "full_column_name": "uric acid"
+        },
+        "un": {
+          "full_column_name": "urea nitrogen"
+        },
+        "cre": {
+          "full_column_name": "creatinine"
+        },
+        "t-bil": {
+          "full_column_name": "total bilirubin"
+        },
+        "t-cho": {
+          "full_column_name": "total cholesterol"
+        },
+        "tg": {
+          "full_column_name": "triglyceride"
+        },
+        "cpk": {
+          "full_column_name": "creatinine phosphokinase"
+        },
+        "glu": {
+          "full_column_name": "blood glucose"
+        },
+        "wbc": {
+          "full_column_name": "White blood cell"
+        },
+        "rbc": {
+          "full_column_name": "Red blood cell"
+        },
+        "hgb": {
+          "full_column_name": "Hemoglobin"
+        },
+        "hct": {
+          "full_column_name": "Hematoclit"
+        },
+        "plt": {
+          "full_column_name": "platelet"
+        },
+        "pt": {
+          "full_column_name": "prothrombin time"
+        },
+        "aptt": {
+          "full_column_name": "activated partial prothrombin time"
+        },
+        "fg": {
+          "full_column_name": "fibrinogen"
+        },
+        "pic": {
+          "full_column_name": "PIC"
+        },
+        "tat": {
+          "full_column_name": "TAT"
+        },
+        "tat2": {
+          "full_column_name": "TAT2"
+        },
+        "u-pro": {
+          "full_column_name": "proteinuria"
+        },
+        "igg": {
+          "full_column_name": "Ig G"
+        },
+        "iga": {
+          "full_column_name": "Ig A"
+        },
+        "igm": {
+          "full_column_name": "Ig M"
+        },
+        "crp": {
+          "full_column_name": "C-reactive protein"
+        },
+        "ra": {
+          "full_column_name": "Rhuematoid Factor"
+        },
+        "rf": {
+          "full_column_name": "RAHA"
+        },
+        "c3": {
+          "full_column_name": "complement 3"
+        },
+        "c4": {
+          "full_column_name": "complement 4"
+        },
+        "rnp": {
+          "full_column_name": "anti-ribonuclear protein"
+        },
+        "sm": {
+          "full_column_name": "anti-SM"
+        },
+        "sc170": {
+          "full_column_name": "anti-scl70"
+        },
+        "ssa": {
+          "full_column_name": "anti-SSA"
+        },
+        "ssb": {
+          "full_column_name": "anti-SSB"
+        },
+        "centromea": {
+          "full_column_name": "anti-centromere"
+        },
+        "dna": {
+          "full_column_name": "anti-DNA"
+        },
+        "dna-ii": {
+          "full_column_name": "anti-DNA"
+        }
+      }
+    },
+    "foreign_keys": [
+      "Examination.ID=Patient.ID",
+      "Laboratory.ID=Patient.ID"
+    ]
+  },
+  "toxicology": {
+    "tables": {
+      "atom": {
+        "atom_id": {
+          "full_column_name": "atom id"
+        },
+        "molecule_id": {
+          "full_column_name": "molecule id"
+        },
+        "element": {
+          "full_column_name": "element"
+        }
+      },
+      "bond": {
+        "bond_id": {
+          "full_column_name": "bond id"
+        },
+        "molecule_id": {
+          "full_column_name": "molecule id"
+        },
+        "bond_type": {
+          "full_column_name": "bond type"
+        }
+      },
+      "connected": {
+        "atom_id": {
+          "full_column_name": "atom id"
+        },
+        "atom_id2": {
+          "full_column_name": "atom id 2"
+        },
+        "bond_id": {
+          "full_column_name": "bond id"
+        }
+      },
+      "molecule": {
+        "molecule_id": {
+          "full_column_name": "molecule id"
+        },
+        "label": {
+          "full_column_name": "label"
+        }
+      }
+    },
+    "foreign_keys": [
+      "atom.molecule_id=molecule.molecule_id",
+      "bond.molecule_id=molecule.molecule_id",
+      "connected.bond_id=bond.bond_id",
+      "connected.atom_id2=atom.atom_id",
+      "connected.atom_id=atom.atom_id"
+    ]
+  },
+  "student_club": {
+    "tables": {
+      "event": {
+        "event_id": {
+          "full_column_name": "event id"
+        },
+        "event_name": {
+          "full_column_name": "event name"
+        },
+        "event_date": {
+          "full_column_name": "event date"
+        },
+        "type": {
+          "full_column_name": "type"
+        },
+        "notes": {
+          "full_column_name": "notes"
+        },
+        "location": {
+          "full_column_name": "location"
+        },
+        "status": {
+          "full_column_name": "status"
+        }
+      },
+      "major": {
+        "major_id": {
+          "full_column_name": "major id"
+        },
+        "major_name": {
+          "full_column_name": "major name"
+        },
+        "department": {
+          "full_column_name": "department"
+        },
+        "college": {
+          "full_column_name": "college"
+        }
+      },
+      "zip_code": {
+        "zip_code": {
+          "full_column_name": "zip code"
+        },
+        "type": {
+          "full_column_name": "type"
+        },
+        "city": {
+          "full_column_name": "city"
+        },
+        "county": {
+          "full_column_name": "county"
+        },
+        "state": {
+          "full_column_name": "state"
+        },
+        "short_state": {
+          "full_column_name": "short state"
+        }
+      },
+      "attendance": {
+        "link_to_event": {
+          "full_column_name": "link to event"
+        },
+        "link_to_member": {
+          "full_column_name": "link to member"
+        }
+      },
+      "budget": {
+        "budget_id": {
+          "full_column_name": "budget id"
+        },
+        "category": {
+          "full_column_name": "category"
+        },
+        "spent": {
+          "full_column_name": "spent"
+        },
+        "remaining": {
+          "full_column_name": "remaining"
+        },
+        "amount": {
+          "full_column_name": "amount"
+        },
+        "event_status": {
+          "full_column_name": "event status"
+        },
+        "link_to_event": {
+          "full_column_name": "link to event"
+        }
+      },
+      "expense": {
+        "expense_id": {
+          "full_column_name": "expense id"
+        },
+        "expense_description": {
+          "full_column_name": "expense description"
+        },
+        "expense_date": {
+          "full_column_name": "expense date"
+        },
+        "cost": {
+          "full_column_name": "cost"
+        },
+        "approved": {
+          "full_column_name": "approved"
+        },
+        "link_to_member": {
+          "full_column_name": "link to member"
+        },
+        "link_to_budget": {
+          "full_column_name": "link to budget"
+        }
+      },
+      "income": {
+        "income_id": {
+          "full_column_name": "income id"
+        },
+        "date_received": {
+          "full_column_name": "date received"
+        },
+        "amount": {
+          "full_column_name": "amount"
+        },
+        "source": {
+          "full_column_name": "source"
+        },
+        "notes": {
+          "full_column_name": "notes"
+        },
+        "link_to_member": {
+          "full_column_name": "link to member"
+        }
+      },
+      "member": {
+        "member_id": {
+          "full_column_name": "member id"
+        },
+        "first_name": {
+          "full_column_name": "first name"
+        },
+        "last_name": {
+          "full_column_name": "last name"
+        },
+        "email": {
+          "full_column_name": "email"
+        },
+        "position": {
+          "full_column_name": "position"
+        },
+        "t_shirt_size": {
+          "full_column_name": "t shirt size"
+        },
+        "phone": {
+          "full_column_name": "phone"
+        },
+        "zip": {
+          "full_column_name": "zip"
+        },
+        "link_to_major": {
+          "full_column_name": "link to major"
+        }
+      }
+    },
+    "foreign_keys": [
+      "Attendance.link_to_member=Member.member_id",
+      "Attendance.link_to_event=Event.event_id",
+      "Budget.link_to_event=Event.event_id",
+      "Expense.link_to_member=Member.member_id",
+      "Expense.link_to_budget=Budget.budget_id",
+      "Income.link_to_member=Member.member_id",
+      "Member.zip=Zip_Code.zip_code",
+      "Member.link_to_major=Major.major_id"
+    ]
+  },
+  "superhero": {
+    "tables": {
+      "alignment": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "alignment": {
+          "full_column_name": "alignment"
+        }
+      },
+      "attribute": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "attribute_name": {
+          "full_column_name": "attribute name"
+        }
+      },
+      "colour": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "colour": {
+          "full_column_name": "colour"
+        }
+      },
+      "gender": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "gender": {
+          "full_column_name": "gender"
+        }
+      },
+      "publisher": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "publisher_name": {
+          "full_column_name": "publisher name"
+        }
+      },
+      "race": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "race": {
+          "full_column_name": "race"
+        }
+      },
+      "superhero": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "superhero_name": {
+          "full_column_name": "superhero name"
+        },
+        "full_name": {
+          "full_column_name": "full name"
+        },
+        "gender_id": {
+          "full_column_name": "gender id"
+        },
+        "eye_colour_id": {
+          "full_column_name": "eye colour id"
+        },
+        "hair_colour_id": {
+          "full_column_name": "hair colour id"
+        },
+        "skin_colour_id": {
+          "full_column_name": "skin colour id"
+        },
+        "race_id": {
+          "full_column_name": "race id"
+        },
+        "publisher_id": {
+          "full_column_name": "publisher id"
+        },
+        "alignment_id": {
+          "full_column_name": "alignment id"
+        },
+        "height_cm": {
+          "full_column_name": "height cm"
+        },
+        "weight_kg": {
+          "full_column_name": "weight kg"
+        }
+      },
+      "hero_attribute": {
+        "hero_id": {
+          "full_column_name": "hero id"
+        },
+        "attribute_id": {
+          "full_column_name": "attribute id"
+        },
+        "attribute_value": {
+          "full_column_name": "attribute value"
+        }
+      },
+      "superpower": {
+        "id": {
+          "full_column_name": "id"
+        },
+        "power_name": {
+          "full_column_name": "power name"
+        }
+      },
+      "hero_power": {
+        "hero_id": {
+          "full_column_name": "hero id"
+        },
+        "power_id": {
+          "full_column_name": "power id"
+        }
+      }
+    },
+    "foreign_keys": [
+      "superhero.skin_colour_id=colour.id",
+      "superhero.race_id=race.id",
+      "superhero.publisher_id=publisher.id",
+      "superhero.hair_colour_id=colour.id",
+      "superhero.gender_id=gender.id",
+      "superhero.eye_colour_id=colour.id",
+      "superhero.alignment_id=alignment.id",
+      "hero_attribute.hero_id=superhero.id",
+      "hero_attribute.attribute_id=attribute.id",
+      "hero_power.power_id=superpower.id",
+      "hero_power.hero_id=superhero.id"
+    ]
+  },
+  "codebase_community": {
+    "tables": {
+      "badges": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "userid": {
+          "full_column_name": "User Id"
+        },
+        "name": {
+          "full_column_name": "Name"
+        },
+        "date": {
+          "full_column_name": "Date"
+        }
+      },
+      "comments": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "postid": {
+          "full_column_name": "Post Id"
+        },
+        "score": {
+          "full_column_name": "Score"
+        },
+        "text": {
+          "full_column_name": "Text"
+        },
+        "creationdate": {
+          "full_column_name": "Creation Date"
+        },
+        "userid": {
+          "full_column_name": "User Id"
+        },
+        "userdisplayname": {
+          "full_column_name": "User Display Name"
+        }
+      },
+      "posthistory": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "posthistorytypeid": {
+          "full_column_name": "Post History Type Id"
+        },
+        "postid": {
+          "full_column_name": "Post Id"
+        },
+        "revisionguid": {
+          "full_column_name": "Revision GUID"
+        },
+        "creationdate": {
+          "full_column_name": "Creation Date"
+        },
+        "userid": {
+          "full_column_name": "User Id"
+        },
+        "text": {
+          "full_column_name": "Text"
+        },
+        "comment": {
+          "full_column_name": "Comment"
+        },
+        "userdisplayname": {
+          "full_column_name": "User Display Name"
+        }
+      },
+      "postlinks": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "creationdate": {
+          "full_column_name": "Creation Date"
+        },
+        "postid": {
+          "full_column_name": "Post Id"
+        },
+        "relatedpostid": {
+          "full_column_name": "Related Post Id"
+        },
+        "linktypeid": {
+          "full_column_name": "Link Type Id"
+        }
+      },
+      "posts": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "posttypeid": {
+          "full_column_name": "Post Type Id"
+        },
+        "acceptedanswerid": {
+          "full_column_name": "Accepted Answer Id"
+        },
+        "creaiondate": {
+          "full_column_name": "Creation Date"
+        },
+        "score": {
+          "full_column_name": "Score"
+        },
+        "viewcount": {
+          "full_column_name": "View Count"
+        },
+        "body": {
+          "full_column_name": "Body"
+        },
+        "owneruserid": {
+          "full_column_name": "Owner User Id"
+        },
+        "lasactivitydate": {
+          "full_column_name": "Last Activity Date"
+        },
+        "title": {
+          "full_column_name": "Title"
+        },
+        "tags": {
+          "full_column_name": "Tags"
+        },
+        "answercount": {
+          "full_column_name": "Answer Count"
+        },
+        "commentcount": {
+          "full_column_name": "Comment Count"
+        },
+        "favoritecount": {
+          "full_column_name": "Favorite Count"
+        },
+        "lasteditoruserid": {
+          "full_column_name": "Last Editor User Id"
+        },
+        "lasteditdate": {
+          "full_column_name": "Last Edit Date"
+        },
+        "communityowneddate": {
+          "full_column_name": "Community Owned Date"
+        },
+        "parentid": {
+          "full_column_name": "ParentId"
+        },
+        "closeddate": {
+          "full_column_name": "Closed Date"
+        },
+        "ownerdisplayname": {
+          "full_column_name": "Owner Display Name"
+        },
+        "lasteditordisplayname": {
+          "full_column_name": "Last Editor Display Name"
+        }
+      },
+      "tags": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "tagname": {
+          "full_column_name": "Tag Name"
+        },
+        "count": {
+          "full_column_name": "Count"
+        },
+        "excerptpostid": {
+          "full_column_name": "Excerpt Post Id"
+        },
+        "wikipostid": {
+          "full_column_name": "Wiki Post Id"
+        }
+      },
+      "users": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "reputation": {
+          "full_column_name": "Reputation"
+        },
+        "creationdate": {
+          "full_column_name": "Creation Date"
+        },
+        "displayname": {
+          "full_column_name": "Display Name"
+        },
+        "lastaccessdate": {
+          "full_column_name": "Last Access Date"
+        },
+        "websiteurl": {
+          "full_column_name": "Website Url"
+        },
+        "location": {
+          "full_column_name": "Location"
+        },
+        "aboutme": {
+          "full_column_name": "About Me"
+        },
+        "views": {
+          "full_column_name": "Views"
+        },
+        "upvotes": {
+          "full_column_name": "UpVotes"
+        },
+        "downvotes": {
+          "full_column_name": "DownVotes"
+        },
+        "accountid": {
+          "full_column_name": "Account Id"
+        },
+        "age": {
+          "full_column_name": "Age"
+        },
+        "profileimageurl": {
+          "full_column_name": "Profile Image Url"
+        }
+      },
+      "votes": {
+        "id": {
+          "full_column_name": "Id"
+        },
+        "postid": {
+          "full_column_name": "Post Id"
+        },
+        "votetypeid": {
+          "full_column_name": "Vote Type Id"
+        },
+        "creationdate": {
+          "full_column_name": "Creation Date"
+        },
+        "userid": {
+          "full_column_name": "User Id"
+        },
+        "bountyamount": {
+          "full_column_name": "Bounty Amount"
+        }
+      }
+    },
+    "foreign_keys": [
+      "badges.UserId=users.Id",
+      "comments.UserId=users.Id",
+      "comments.PostId=posts.Id",
+      "postHistory.UserId=users.Id",
+      "postHistory.PostId=posts.Id",
+      "postLinks.RelatedPostId=posts.Id",
+      "postLinks.PostId=posts.Id",
+      "posts.ParentId=posts.Id",
+      "posts.OwnerUserId=users.Id",
+      "posts.LastEditorUserId=users.Id",
+      "tags.ExcerptPostId=posts.Id",
+      "votes.UserId=users.Id",
+      "votes.PostId=posts.Id"
+    ]
+  }
+}
