@@ -3,7 +3,7 @@ The RB-models are designed base on [ColBERT](https://github.com/stanford-futured
 User should construct datasets from the original BIRD and Spider.
 
 Here, we provide some processed datasets and examples about how to train and use RB-models as follows:
-## Set PYTHONPATH
+## Set PythonPath
 ```
 export PYTHONPATH=$PYTHONPATH:/.../RB-model
 ```
