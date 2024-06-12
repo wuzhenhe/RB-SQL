@@ -1,17 +1,22 @@
 The RB-models are designed base on ColBERT.
 
-We provide examples about how to train and use RB-models as follows:
 
+
+We provide examples about how to train and use RB-models as follows:
+## First
+```
+export PYTHONPATH=$PYTHONPATH:/.../RB-model
+```
 # Table-Retriever
 
 ## Training
 
 ```
-CUDA_VISIBLE_DEVICES="0,1,2,3" \
-python -m torch.distributed.launch --nproc_per_node=4 -m \
-colbert.train --amp --doc_maxlen 180 --mask-punctuation --bsize 32 --accum 1 \
---triples /path/to/MSMARCO/triples.train.small.tsv \
---root /root/to/experiments/ --experiment MSMARCO-psg --similarity l2 --run msmarco.psg.l2
+python ./colbert/train.py --amp --doc_maxlen 180 --mask-punctuation --bsize 32 --accum 1 \
+--triples ../triples.train.tsv \
+--collection ../collection.train.tsv \
+--queries ../queries.train.tsv \
+--root ./experiments/ --experiment bird --similarity cosine --run bird.cosine
 ```
 
 
