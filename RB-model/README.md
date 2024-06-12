@@ -1,35 +1,9 @@
-----
-----
+The RB-models are designed base on ColBERT.
+We provide examples about how to train and use RB-models as follows:
 
-**NOTE: This branch has the code for [ColBERTv1](https://arxiv.org/abs/2004.12832). The  [`main` branch](https://github.com/stanford-futuredata/ColBERT/tree/main) contains a new simpler API plus the code for the new [ColBERTv2](https://arxiv.org/abs/2112.01488) model with [PLAID](https://arxiv.org/abs/2205.09707) performance optimizations, including a public checkpoint as well as a public release of our LoTTE benchmark.**
+# Table-Retriever
 
-----
-
-----
-
-
-# ColBERT
-
-### ColBERT is a _fast_ and _accurate_ retrieval model, enabling scalable BERT-based search over large text collections in tens of milliseconds. 
-
-<p align="center">
-  <img align="center" src="docs/images/ColBERT-Framework-MaxSim-W370px.png" />
-</p>
-<p align="center">
-  <b>Figure 1:</b> ColBERT's late interaction, efficiently scoring the fine-grained similarity between a queries and a passage.
-</p>
-
-As Figure 1 illustrates, ColBERT relies on fine-grained **contextual late interaction**: it encodes each passage into a **matrix** of token-level embeddings (shown above in blue). Then at search time, it embeds every query into another matrix (shown in green) and efficiently finds passages that contextually match the query using scalable vector-similarity (`MaxSim`) operators.
-
-These rich interactions allow ColBERT to surpass the quality of _single-vector_ representation models, while scaling efficiently to large corpora. You can read more in our papers:
-
-* [**ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT**](https://arxiv.org/abs/2004.12832) (SIGIR'20).
-* [**Relevance-guided Supervision for OpenQA with ColBERT**](https://arxiv.org/abs/2007.00814) (TACL'21).
-* [**ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction**](https://arxiv.org/abs/2112.01488) (to appear at NAACL'22).
-
-----
-
-## Installation
+## Training
 
 ColBERT (currently: [v0.2.0](#releases)) requires Python 3.7+ and Pytorch 1.6+ and uses the [HuggingFace Transformers](https://github.com/huggingface/transformers) library.
 
