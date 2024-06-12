@@ -1,38 +1,34 @@
-The RB-models are designed base on ColBERT.
+The RB-models are designed base on ColBERT. The environment and data formats are the same as ColBERT.
 
+So you should construct datasets from the original BIRD and Spider.
 
-
-We provide examples about how to train and use RB-models as follows:
-## First
+Here, we provide some processed datasets and examples about how to train and use RB-models as follows:
+## Set PYTHONPATH
 ```
 export PYTHONPATH=$PYTHONPATH:/.../RB-model
 ```
+
 # Table-Retriever
 
 ## Training
 
 ```
 python ./colbert/train.py --amp --doc_maxlen 180 --mask-punctuation --bsize 32 --accum 1 \
---triples ../triples.train.tsv \
---collection ../collection.train.tsv \
---queries ../queries.train.tsv \
+--triples ./bird_table_train/triples.train.tsv \
+--collection ./bird_table_train/collection.train.tsv \
+--queries ./bird_table_train/queries.train.tsv \
 --root ./experiments/ --experiment bird --similarity cosine --run bird.cosine
 ```
+The trained model is reserved as ```./experiments/bird/train.py/bird.cosine/checkpoints/xxx.dnn```
 
+## Reference
 
-## Overview
-
-Using ColBERT on a dataset typically involves the following steps.
-
-**Step 0: Preprocess your collection.** At its simplest, ColBERT works with tab-separated (TSV) files: a file (e.g., `collection.tsv`) will contain all passages and another (e.g., `queries.tsv`) will contain a set of queries for searching the collection.
-
-**Step 1: Train a ColBERT model.**  You can [train your own ColBERT model](#training) and [validate performance](#validation) on a suitable development set.
-
-**Step 2: Index your collection.** Once you're happy with your ColBERT model, you need to [index your collection](#indexing) to permit fast retrieval. This step encodes all passages into matrices, stores them on disk, and builds data structures for efficient search.
-
-**Step 3: Search the collection with your queries.** Given your model and index, you can [issue queries over the collection](#retrieval) to retrieve the top-k passages for each query.
-
-Below, we illustrate these steps via an example run on the MS MARCO Passage Ranking task.
+```
+python ./colbert/calculate_sim_colbert.py --amp --doc_maxlen 180 --mask-punctuation \
+--checkpoint ./experiments/bird/train.py/bird.cosine/checkpoints/xxx.dnn \
+--root ./experiments/ --experiment bird
+```
+We can edit the the last line of```calculate_sim_colbert.py``` to modify the result file address.
 
 
 ## Data
