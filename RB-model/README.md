@@ -1,20 +1,18 @@
 The RB-models are designed base on ColBERT.
+
 We provide examples about how to train and use RB-models as follows:
 
 # Table-Retriever
 
 ## Training
 
-ColBERT (currently: [v0.2.0](#releases)) requires Python 3.7+ and Pytorch 1.6+ and uses the [HuggingFace Transformers](https://github.com/huggingface/transformers) library.
-
-We strongly recommend creating a conda environment using:
-
 ```
-conda env create -f conda_env.yml
-conda activate colbert-v0.2
+CUDA_VISIBLE_DEVICES="0,1,2,3" \
+python -m torch.distributed.launch --nproc_per_node=4 -m \
+colbert.train --amp --doc_maxlen 180 --mask-punctuation --bsize 32 --accum 1 \
+--triples /path/to/MSMARCO/triples.train.small.tsv \
+--root /root/to/experiments/ --experiment MSMARCO-psg --similarity l2 --run msmarco.psg.l2
 ```
-
-If you face any problems, please [open a new issue](https://github.com/stanford-futuredata/ColBERT/issues) and we'll help you promptly!
 
 
 ## Overview
