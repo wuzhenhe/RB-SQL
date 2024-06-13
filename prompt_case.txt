@@ -1,154 +1,334 @@
-*******question_id 0: How many singers do we have?
+question: How many male customers who are living in North Bohemia have average salary greater than 8000?
 
-Given a 【Database schema】 description, a knowledge 【Evidence】 and the 【Question】, you need to use valid SQLite and understand the database and knowledge, and then generate the corresponding SQL.
-
-==========
-#few-shot1
-【Database schema】
-# Table: stadium
-[
-  (Stadium_ID, stadium id. Value examples: [1, 2, 3, 4, 5, 6].),
-  (Location, location. Value examples: ['Stirling Albion', 'Raith Rovers', "Queen's Park", 'Peterhead', 'East Fife', 'Brechin City'].),
-  (Name, name. Value examples: ["Stark's Park", 'Somerset Park', 'Recreation Park', 'Hampden Park', 'Glebe Park', 'Gayfield Park'].),
-  (Capacity, capacity. Value examples: [52500, 11998, 10104, 4125, 4000, 3960].),
-  (Highest, highest. Value examples: [4812, 2363, 1980, 1763, 1125, 1057].),
-  (Lowest, lowest. Value examples: [1294, 1057, 533, 466, 411, 404].),
-  (Average, average. Value examples: [2106, 1477, 864, 730, 642, 638].)
-]
-# Table: concert
-[
-  (concert_ID, concert id. Value examples: [1, 2, 3, 4, 5, 6].),
-  (concert_Name, concert name. Value examples: ['Week 1', 'Week 2', 'Super bootcamp', 'Home Visits', 'Auditions'].),
-  (Theme, theme. Value examples: ['Wide Awake', 'Party All Night', 'Happy Tonight', 'Free choice 2', 'Free choice', 'Bleeding Love'].),
-  (Stadium_ID, stadium id. Value examples: ['2', '9', '7', '10', '1'].),
-  (Year, year. Value examples: ['2015', '2014'].)
-]
-【Foreign keys】
-concert.`Stadium_ID` = stadium.`Stadium_ID`
-
-【Evidence】
-The stadium name is mapped to `Name` in the table stadium; the number of concerts in each stadium is the count of `concert_ID` from the table concert grouped by `Stadium_ID`.
-
-【Question】
-Show the stadium name and the number of concerts in each stadium.
-
-Generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
-1. generate the SQL skeleton from question:
-```sql skeleton
-SELECT T1.[column_name], COUNT(*) FROM [table_name] AS T1 JOIN [table_name] AS T2 ON T1.[column_name] = T2.[column_name] GROUP BY T1.[column_name]
-```
-
-2. Fill the skeleton with 【Evidence】, replace [table_name] and [column_name] with exactly column name and table name in schema:
-```sql
-SELECT T1.`Name`, COUNT(*) FROM stadium AS T1 JOIN concert AS T2 ON T1.`Stadium_ID` = T2.`Stadium_ID` GROUP BY T1.`Stadium_ID`
-```
-Question Solved.
-
-==========
-#few-shot2
-【Database schema】
-# Table: singer
-[
-  (Singer_ID, singer id. Value examples: [1, 2].),
-  (Name, name. Value examples: ['Tribal King', 'Timbaland'].),
-  (Country, country. Value examples: ['France', 'United States', 'Netherlands'].),
-  (Song_Name, song name. Value examples: ['You', 'Sun', 'Love', 'Hey Oh'].),
-  (Song_release_year, song release year. Value examples: ['2016', '2014'].),
-  (Age, age. Value examples: [52, 43].)
-]
-# Table: concert
-[
-  (concert_ID, concert id. Value examples: [1, 2].),
-  (concert_Name, concert name. Value examples: ['Super bootcamp', 'Home Visits', 'Auditions'].),
-  (Theme, theme. Value examples: ['Wide Awake', 'Party All Night'].),
-  (Stadium_ID, stadium id. Value examples: ['2', '9'].),
-  (Year, year. Value examples: ['2015', '2014'].)
-]
-# Table: singer_in_concert
-[
-  (concert_ID, concert id. Value examples: [1, 2].),
-  (Singer_ID, singer id. Value examples: ['3', '6'].)
-]
-【Foreign keys】
-singer_in_concert.`Singer_ID` = singer.`Singer_ID`
-singer_in_concert.`concert_ID` = concert.`concert_ID`
-
-【Evidence】
-The youngest singer refers to the singer with the lowest `Age` value in the table singer; the name and release year of the song are mapped to `Name` and `Song_release_year` in the table singer.
-
-【Question】
-Show the name and the release year of the song by the youngest singer.
-
-Generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
-1. generate the SQL skeleton from question:
-```sql skeleton
-SELECT [column_name], [column_name] FROM [table_name] WHERE [column_name] = (SELECT MIN([column_name]) FROM [table_name])
-```
-
-2. Fill the skeleton with 【Evidence】, replace [table_name] and [column_name] with exactly column name and table name in schema:
-```sql
-SELECT `Song_Name`, `Song_release_year` FROM singer WHERE Age = (SELECT MIN(Age) FROM singer)
-```
-
-Question Solved.
+Given a 【Database schema】 description, a knowledge 【Evidence】 and the 【Question】, you need to use valid SQLite and understand the database and knowledge, and then decompose the question into subquestions for text-to-SQL generation.
+When generating SQL, we should always consider constraints:
+【Constraints】
+- In `SELECT <column>`, just select needed columns in the 【Question】 without any unnecessary column or value
+- In `FROM <table>` or `JOIN <table>`, do not include unnecessary table
+- If use max or min func, `JOIN <table>` FIRST, THEN use `SELECT MAX(<column>)` or `SELECT MIN(<column>)`
+- If [Value examples] of <column> has 'None' or None, use `JOIN <table>` or `WHERE <column> is NOT NULL` is better
+- If use `ORDER BY <column> ASC|DESC`, add `GROUP BY <column>` before to select distinct values
 
 ==========
 
-【Database schema】
-# Table: stadium
-[
-  (Stadium_ID, stadium id.),
-  (Location, location. Value examples: ['Stirling Albion', 'Raith Rovers', "Queen's Park", 'Peterhead', 'East Fife', 'Brechin City'].),
-  (Name, name. Value examples: ["Stark's Park", 'Somerset Park', 'Recreation Park', 'Hampden Park', 'Glebe Park', 'Gayfield Park'].),
-  (Capacity, capacity. Value examples: [52500, 11998, 10104, 4125, 4000, 3960].),
-  (Highest, highest. Value examples: [4812, 2363, 1980, 1763, 1125, 1057].),
-  (Lowest, lowest. Value examples: [1294, 1057, 533, 466, 411, 404].),
-  (Average, average. Value examples: [2106, 1477, 864, 730, 642, 638].)
-]
-# Table: singer
-[
-  (Singer_ID, singer id.),
-  (Name, name. Value examples: ['Tribal King', 'Timbaland', 'Rose White', 'Justin Brown', 'John Nizinik', 'Joe Sharp'].),
-  (Country, country. Value examples: ['France', 'United States', 'Netherlands'].),
-  (Song_Name, song name. Value examples: ['You', 'Sun', 'Love', 'Hey Oh', 'Gentleman', 'Dangerous'].),
-  (Song_release_year, song release year. Value examples: ['2016', '2014', '2013', '2008', '2003', '1992'].),
-  (Age, age. Value examples: [52, 43, 41, 32, 29, 25].),
-  (Is_male, is male. Value examples: ['T', 'F'].)
-]
-# Table: concert
-[
-  (concert_ID, concert id.),
-  (concert_Name, concert name. Value examples: ['Week 1', 'Week 2', 'Super bootcamp', 'Home Visits', 'Auditions'].),
-  (Theme, theme. Value examples: ['Wide Awake', 'Party All Night', 'Happy Tonight', 'Free choice 2', 'Free choice', 'Bleeding Love'].),
-  (Stadium_ID, stadium id.),
-  (Year, year. Value examples: ['2015', '2014'].)
-]
-# Table: singer_in_concert
-[
-  (concert_ID, concert id.),
-  (Singer_ID, singer id.)
-]
-【Foreign keys】
-concert.`Stadium_ID` = stadium.`Stadium_ID`
-singer_in_concert.`Singer_ID` = singer.`Singer_ID`
-singer_in_concert.`concert_ID` = concert.`concert_ID`
+【few-shot 1 selected by SQL-Skeleton-Retriever】
 
+【Database schema】
+# Table: west_superstore
+[
+  (Order ID: order id. the unique identifier for the order, field type is TEXT, Value examples: ['CA-2017-165330', 'CA-2013-165330', 'CA-2018-117457', 'CA-2016-164882', 'CA-2016-104346']),
+  (Product ID: product id. the id of the product, field type is TEXT, Value examples: ['TEC-AC-10003832', 'OFF-PA-10002005', 'OFF-BI-10002103', 'OFF-BI-10001670', 'FUR-TA-10003473']),
+  (Sales: the sales of the product, field type is REAL),
+  (Region: region of the customer's address, field type is TEXT, Value examples: ['West']),
+  (Customer ID: customer id. the id of the customer, field type is TEXT, Value examples: ['WB-21850', 'AP-10915', 'RW-19540', 'GG-14650', 'ZC-21910']),
+]
+
+# Table: product
+[
+  (Region: the region of products, field type is TEXT,  Central:   East:   West:   South:, Value examples: ['West', 'East', 'Central', 'South']),
+  (Product ID: the id of products, field type is TEXT, primary key, Value examples: ['FUR-BO-10001337', 'FUR-BO-10001608', 'FUR-BO-10001972', 'FUR-BO-10003441', 'FUR-BO-10004709']),
+]
+
+# Table: people
+[
+  (State: the state of people, field type is TEXT, commonsense evidence: please mention its full name in the question, by referring to  https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=53971 e.g., New York --> NY, Value examples: ['California', 'New York', 'Texas', 'Illinois', 'Pennsylvania']),
+  (Region: the region of people, field type is TEXT,  Central:   East:   West:   South:, Value examples: ['West', 'East', 'Central', 'South']),
+  (Customer ID: the id of the customers, field type is TEXT, primary key, Value examples: ['AA-10375', 'AA-10645', 'AB-10060', 'AB-10105', 'AB-10165']),
+]
+
+【Foreign keys】
+west_superstore.`Product ID`=product.`Product ID`
+west_superstore.Region=people.Region
+【Question】
+Among the orders with sales value of no less than 5,000 in west superstore, how many were bought by the customers in California?
 【Evidence】
-The total number of singers is represented by the count of distinct `Singer_ID` in the table singer.
+customers in California refers to State = 'California'; orders with sales value of no less than 5,000 refers to Sales > = 5,000
+
+Decompose the question into sub questions, considering 【Constraints】, generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+Sub question 1: Identify the orders with sales value of no less than 5,000 in the west superstore.
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT [column_name]
+  FROM [table_name]
+  WHERE [column_name] >= [value]
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT `Order ID`
+  FROM west_superstore
+  WHERE `Sales` >= 5000
+```
+
+Sub question 2: Count how many of these orders were bought by customers in California.
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT COUNT(DISTINCT [column_name])
+  FROM [table_name] AS T1
+  INNER JOIN [table_name] AS T2
+  ON T1.[column_name] = T2.[column_name]
+  WHERE T1.[column_name] = [value]
+  AND T1.[column_name] IN (
+    SELECT [column_name]
+    FROM [table_name]
+    WHERE [column_name] >= [value]
+  )
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT COUNT(DISTINCT T1.`Order ID`)
+  FROM west_superstore AS T1
+  INNER JOIN people AS T2
+  ON T1.`Customer ID` = T2.`Customer ID`
+  WHERE T2.`State` = 'California'
+  AND T1.`Sales` >= 5000
+```
+==========
+ 
+【few-shot 2 selected by SQL-Skeleton-Retriever】
+
+【Database schema】
+# Table: west_superstore
+[
+  (Quantity: the quantity of the product, field type is INTEGER),
+  (Product ID: product id. the id of the product, field type is TEXT, Value examples: ['TEC-AC-10003832', 'OFF-PA-10002005', 'OFF-BI-10002103', 'OFF-BI-10001670', 'FUR-TA-10003473']),
+  (Customer ID: customer id. the id of the customer, field type is TEXT, Value examples: ['WB-21850', 'AP-10915', 'RW-19540', 'GG-14650', 'ZC-21910']),
+]
+
+# Table: people
+[
+  (City: the city of people, field type is TEXT, Value examples: ['New York City', 'Los Angeles', 'Philadelphia', 'San Francisco', 'Houston']),
+  (Customer ID: the id of the customers, field type is TEXT, primary key, Value examples: ['AA-10375', 'AA-10645', 'AB-10060', 'AB-10105', 'AB-10165']),
+]
+
+# Table: product
+[
+  (Product Name: the name of products, field type is TEXT),
+  (Product ID: the id of products, field type is TEXT, primary key, Value examples: ['FUR-BO-10001337', 'FUR-BO-10001608', 'FUR-BO-10001972', 'FUR-BO-10003441', 'FUR-BO-10004709']),
+]
+
+【Foreign keys】
+west_superstore.`Product ID`=product.`Product ID`
+west_superstore.Region=product.Region
+west_superstore.`Customer ID`=people.`Customer ID`
+【Question】
+How many customers in Chicago ordered at least 10 Cardinal EasyOpen D-Ring Binders in a single order?
+【Evidence】
+at least 10 goods refers to Quantity > = 14; Cardinal EasyOpen D-Ring Binders refers to "Product Name"; customers in Chicago refers to City = 'Chicago'
+
+Decompose the question into sub questions, considering 【Constraints】, generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+Sub question 1: What is the Product ID of "Cardinal EasyOpen D-Ring Binders"?
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT [column_name]
+  FROM [table_name]
+  WHERE [column_name] = [value]
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT `Product ID`
+  FROM product
+  WHERE `Product Name` = 'Cardinal EasyOpen D-Ring Binders'
+```
+
+Sub question 2: How many customers in Chicago have ordered the identified product with a quantity of at least 10 in a single order?
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT COUNT(DISTINCT T1.[column_name])
+  FROM [table_name] AS T1
+  INNER JOIN [table_name] AS T2
+  ON T1.[column_name] = T2.[column_name]
+  WHERE T1.[column_name] >= [value]
+  AND T2.[column_name] = [value]
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT COUNT(DISTINCT T1.`Customer ID`)
+  FROM west_superstore AS T1
+  INNER JOIN people AS T2
+  ON T1.`Customer ID` = T2.`Customer ID`
+  WHERE T1.`Quantity` >= 10
+  AND T2.`City` = 'Chicago'
+  AND T1.`Product ID` IN (
+    SELECT `Product ID`
+    FROM product
+    WHERE `Product Name` = 'Cardinal EasyOpen D-Ring Binders'
+  )
+```
+==========
+
+【few-shot 3 selected by SQL-Skeleton-Retriever】
+
+【Database schema】
+# Table: economy
+[
+  (Inflation: inflation rate (per annum),, field type is REAL),
+  (Country: the country code, field type is TEXT, primary key, Value examples: ['A', 'AFG', 'AG', 'AL', 'AMSA']),
+]
+
+# Table: organization
+[
+  (Country: the code of the country where the headquarters are located, field type is TEXT, Value examples: [None, 'USA', 'CH', 'F', 'B', 'A']),
+]
+
+【Foreign keys】
 
 【Question】
-How many singers do we have?
+Among the countries with over 3 organizations, how many of them have an inflation rate of over 5%?
+【Evidence】
 
-Generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
-1. Generate the SQL skeleton from the question:
+
+Decompose the question into sub questions, considering 【Constraints】, generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+Sub question 1: Identify the countries with over 3 organizations.
+generate the SQL skeleton from sub question:
 ```sql skeleton
-SELECT COUNT(DISTINCT [column_name]) FROM [table_name]
+SELECT [column_name]
+  FROM [table_name]
+  GROUP BY [column_name]
+  HAVING COUNT([column_name]) > [value]
 ```
-
-2. Fill the skeleton with 【Evidence】, replace [table_name] and [column_name] with exactly column name and table name in schema:
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
 ```sql
-SELECT COUNT(DISTINCT `Singer_ID`) FROM singer
+SELECT `Country`
+  FROM organization
+  GROUP BY `Country`
+  HAVING COUNT(`Country`) > 3
 ```
 
-Question Solved.
-*******
+Sub question 2: Among the identified countries, count how many have an inflation rate of over 5%.
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT COUNT([distinct_column])
+  FROM [table_name] AS T1
+  WHERE T1.[column_name] > [value]
+  AND T1.[column_name] IN (
+    SELECT [column_name]
+    FROM [table_name]
+    GROUP BY [column_name]
+    HAVING COUNT([column_name]) > [value]
+  )
+```
+fill the SQL skeleton, replace [table_name], [column_name], and [distinct_column] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT COUNT(DISTINCT T1.`Country`)
+  FROM economy AS T1
+  WHERE T1.`Inflation` > 5
+  AND T1.`Country` IN (
+    SELECT `Country`
+    FROM organization
+    GROUP BY `Country`
+    HAVING COUNT(`Country`) > 3
+  )
+```
+
+==========
+
+【Target question】
+
+【Database schema selected by Table-Retriever and Column-Retriever】
+# Table: client
+[
+  (client_id: client id. the unique number, field type is INTEGER, primary key),
+  (gender: field type is TEXT, F：female  M：male, Value examples: ['M', 'F']),
+]
+
+
+# Table: district
+[
+  (A11: average salary, field type is INTEGER),
+]
+
+
+# Table: order
+[
+  (order_id: order id. identifying the unique order, field type is INTEGER, primary key),
+]
+
+
+# Table: disp
+[
+  (client_id: client id. id number of client, field type is INTEGER),
+]
+
+
+# Table: trans
+[
+  (trans_id: transaction id, field type is INTEGER, primary key),
+]
+
+【Foreign keys】
+disp.client_id=client.client_id
+disp.account_id=account.account_id
+【Question】
+How many male customers who are living in North Bohemia have average salary greater than 8000?
+【Evidence】
+Male means that gender = 'M'; A3 refers to region; A11 pertains to average salary.
+
+Decompose the question into sub questions, considering 【Constraints】, generate the skeleton of SQL, fill the SQL skeleton and generate the SQL after thinking step by step:
+Sub question 1: What is the district_id of North Bohemia?
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT [column_name]
+  FROM [table_name]
+  WHERE [column_name] = [value]
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT district_id
+  FROM district
+  WHERE A3 = 'North Bohemia'
+```
+
+Sub question 2: Identify the male customers who are living in North Bohemia.
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT [column_name]
+  FROM [table_name] AS T1
+  INNER JOIN [table_name] AS T2
+  ON T1.[column_name] = T2.[column_name]
+  WHERE T1.[column_name] = [value]
+  AND T2.[column_name] = [value]
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT T1.client_id
+  FROM client AS T1
+  INNER JOIN district AS T2
+  ON T1.district_id = T2.district_id
+  WHERE T1.gender = 'M'
+  AND T2.A3 = 'North Bohemia'
+```
+
+Sub question 3: How many of these male customers have an average salary greater than 8000?
+generate the SQL skeleton from sub question:
+```sql skeleton
+SELECT COUNT(DISTINCT [column_name])
+  FROM [table_name] AS T1
+  INNER JOIN [table_name] AS T2
+  ON T1.[column_name] = T2.[column_name]
+  WHERE T2.[column_name] > [value]
+  AND T1.[column_name] IN (
+    SELECT [column_name]
+    FROM [table_name]
+    WHERE [column_name] = [value]
+    AND [column_name] = [value]
+  )
+```
+fill the SQL skeleton, replace [table_name] and [column_name] with exactly column name and table name in sub question:
+SQL
+```sql
+SELECT COUNT(DISTINCT T1.client_id)
+  FROM client AS T1
+  INNER JOIN district AS T2
+  ON T1.district_id = T2.district_id
+  WHERE T1.gender = 'M'
+  AND T2.A11 > 8000
+  AND T2.A3 = 'North Bohemia'
+```
