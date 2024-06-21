@@ -5,6 +5,7 @@ RB-SQL: A Retrieval-based LLM Framework for Text-to-SQL
 For details, see the RB-model folder.
 
 ## Pipeline of the whole framework
+For details, see the full_rb_sql folder.
 
 ## Spider with evidence
 ```prompt_for_evidence.txt``` shows the prompt for evidence generation.
